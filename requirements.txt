@@ -1,0 +1,3 @@
+# AutoAE Motion Studio - Python Dependencies
+# Uses Python standard library only (http.server, subprocess, etc.)
+# No external packages required
