@@ -21,12 +21,9 @@ perfect_composite_test.png
 reconstruction_test.png
 full_ui_preset29_preview.png
 head_badge_ref.png
-test_head_inspect.png
-test_super_long_text.png
-test_vertical_clutter.png
-test_user_exact_screenshot.png
-test_clutter_fix_*.png
-businessman_*.png
+businessman_head_badge.png
+businessman_head_perfect.png
+businessman_mask.png
 
 # ===== Scratch/helper scripts =====
 apply_preset29_fixes.py
