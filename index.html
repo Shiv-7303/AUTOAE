@@ -528,12 +528,6 @@
       background-size: 20px 20px !important;
     }
 
-    .stage-viewport.green-screen {
-      background: #00ff00 !important;
-    }
-    .stage-viewport.green-screen::before {
-      display: none;
-    }
 
     .video-canvas-wrapper {
       position: relative;
@@ -788,10 +782,10 @@
       <!-- TAB 1: PRESETS -->
       <div class="tab-content active" id="tab-presets">
         <div class="category-nav">
-          <button class="cat-btn active" data-filter="all">All (27)</button>
+          <button class="cat-btn active" data-filter="all">All (28)</button>
           <button class="cat-btn" data-filter="viral">🔥 Text (15)</button>
           <button class="cat-btn" data-filter="browser">🌐 Web (6)</button>
-          <button class="cat-btn" data-filter="motion">⚡ Motion (6)</button>
+          <button class="cat-btn" data-filter="motion">⚡ Motion (7)</button>
         </div>
 
         <div class="style-grid" id="styleGrid">
@@ -904,6 +898,14 @@
           <button class="style-btn" data-style="capcut-keyframe-hook" data-cat="motion">
             <span>27. CapCut Keyframe Editing Hook</span>
             <span class="tag">⚡ Motion</span>
+          </button>
+          <button class="style-btn" data-style="dual-card-pan-hook" data-cat="motion">
+            <span>28. 3D Dual-Card Camera Pan</span>
+            <span class="tag">Dashed Roadmap</span>
+          </button>
+          <button class="style-btn" data-style="presenter-3points-reveal-hook" data-cat="motion">
+            <span>29. 3 Points Presenter Hook</span>
+            <span class="tag">Curiosity Reveal</span>
           </button>
         </div>
 
@@ -1137,6 +1139,116 @@
               </div>
             </div>
           </div>
+
+          <!-- Quick 3D Dual-Card Camera Pan Hook Controls (Preset 28) -->
+          <div id="quickDualCardPanControls" style="display: none; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 11px; font-weight: 700; color: #ffea00; display: flex; align-items: center; gap: 5px;">
+                <i data-lucide="layers" style="width: 12px; height: 12px; color: #ffea00;"></i> 3D Dual-Card Pan Hook
+              </span>
+              <button class="pill-btn" id="btnQuickSwitchMotionTab28" style="font-size: 10px; padding: 2px 7px; color: #ffea00; border-color: rgba(255, 234, 0, 0.4);">Open Motion Tab ⚡</button>
+            </div>
+
+            <!-- Card 1 Quick -->
+            <div style="background: rgba(0, 102, 214, 0.08); border: 1px solid rgba(0, 102, 214, 0.3); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 10.5px; font-weight: 700; color: #60a5fa;">1. Left Card Footage</span>
+                <input type="color" id="quickDualCardStripe1" value="#0066d6" style="width: 22px; height: 20px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+              </div>
+              <input type="text" id="quickDualCardText1" value="YOUR TEXT GOES HERE" placeholder="Text under Card 1" style="font-size: 11px; font-weight: 700;">
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <label class="pill-btn" style="flex: 1; justify-content: center; font-size: 10.5px; padding: 5px 8px; cursor: pointer; background: rgba(0, 102, 214, 0.2); border: 1px solid rgba(0, 102, 214, 0.5); color: #60a5fa;">
+                  <i data-lucide="upload" style="width: 11px; height: 11px;"></i> <span id="quickDualCardStatus1">Upload Media 1</span>
+                  <input type="file" id="quickDualCardUpload1" accept="image/*,video/*" style="display: none;">
+                </label>
+                <button class="pill-btn" id="quickDualCardReset1" style="font-size: 10.5px; padding: 5px 7px; color: var(--text-muted);" title="Reset Card 1">↺</button>
+              </div>
+            </div>
+
+            <!-- Card 2 Quick -->
+            <div style="background: rgba(255, 140, 0, 0.08); border: 1px solid rgba(255, 140, 0, 0.3); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 10.5px; font-weight: 700; color: #fb923c;">2. Right Card Footage</span>
+                <input type="color" id="quickDualCardStripe2" value="#0066d6" style="width: 22px; height: 20px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+              </div>
+              <input type="text" id="quickDualCardText2" value="YOUR TEXT GOES HERE" placeholder="Text under Card 2" style="font-size: 11px; font-weight: 700;">
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <label class="pill-btn" style="flex: 1; justify-content: center; font-size: 10.5px; padding: 5px 8px; cursor: pointer; background: rgba(255, 140, 0, 0.2); border: 1px solid rgba(255, 140, 0, 0.5); color: #fb923c;">
+                  <i data-lucide="upload" style="width: 11px; height: 11px;"></i> <span id="quickDualCardStatus2">Upload Media 2</span>
+                  <input type="file" id="quickDualCardUpload2" accept="image/*,video/*" style="display: none;">
+                </label>
+                <button class="pill-btn" id="quickDualCardReset2" style="font-size: 10.5px; padding: 5px 7px; color: var(--text-muted);" title="Reset Card 2">↺</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick 3 Points Presenter Hook Controls (Preset 29) -->
+          <div id="quickPresenter3PointsControls" style="display: none; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 11px; font-weight: 700; color: #00f0ff; display: flex; align-items: center; gap: 5px;">
+                <i data-lucide="user-check" style="width: 12px; height: 12px; color: #00f0ff;"></i> 3 Points Presenter Hook
+              </span>
+              <button class="pill-btn" id="btnQuickSwitchMotionTab29" style="font-size: 10px; padding: 2px 7px; color: #00f0ff; border-color: rgba(0, 240, 255, 0.4);">Open Motion Tab ⚡</button>
+            </div>
+
+            <!-- Head Avatar Slot -->
+            <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 10.5px; font-weight: 700; color: #34d399;">Head Avatar / Footage</span>
+                <input type="color" id="quickPresenterHeadColor" value="#10b981" style="width: 22px; height: 20px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+              </div>
+              <input type="text" id="quickPresenterHeadPlaceholder" value="INSERT FOOTAGE HERE" placeholder="Badge text" style="font-size: 11px; font-weight: 700;">
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <label class="pill-btn" style="flex: 1; justify-content: center; font-size: 10.5px; padding: 5px 8px; cursor: pointer; background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.5); color: #34d399;">
+                  <i data-lucide="upload" style="width: 11px; height: 11px;"></i> <span id="quickPresenterHeadStatus">Upload Avatar / Video</span>
+                  <input type="file" id="quickPresenterHeadUpload" accept="image/*,video/*" style="display: none;">
+                </label>
+                <button class="pill-btn" id="quickPresenterHeadReset" style="font-size: 10.5px; padding: 5px 7px; color: var(--text-muted);" title="Reset Head">↺</button>
+              </div>
+            </div>
+
+            <!-- Arrow Color -->
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255, 59, 0, 0.08); border: 1px solid rgba(255, 59, 0, 0.25); border-radius: 6px; padding: 6px 8px;">
+              <span style="font-size: 10.5px; font-weight: 700; color: #ff5722;">Neon Arrow Arc Color:</span>
+              <input type="color" id="quickPresenterArrowColor" value="#ff3b00" style="width: 24px; height: 20px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+            </div>
+
+            <!-- Font / Text Size Control -->
+            <div style="background: rgba(140, 82, 255, 0.08); border: 1px solid rgba(140, 82, 255, 0.25); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 4px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 10.5px; font-weight: 700; color: #c084fc;">Points Text Size:</span>
+                <span class="val-badge" id="quickPresenterFontSizeVal" style="font-size: 10px; background: rgba(140, 82, 255, 0.2); color: #c084fc; padding: 1px 6px; border-radius: 4px;">56px</span>
+              </div>
+              <input type="range" id="quickPresenterFontSize" min="24" max="96" value="56" step="1" style="width: 100%; accent-color: var(--primary); cursor: pointer;">
+            </div>
+
+            <!-- Point 1 -->
+            <div style="background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 4px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 10.5px; font-weight: 700; color: #00f0ff;">1. Secret Point 1 (t ≈ 2.3s)</span>
+                <input type="color" id="quickPresenterColor1" value="#00f0ff" style="width: 20px; height: 18px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+              </div>
+              <input type="text" id="quickPresenterText1" value="Text 1" placeholder="Point 1 Text" style="font-size: 11px; font-weight: 700;">
+            </div>
+
+            <!-- Point 2 -->
+            <div style="background: rgba(255, 215, 0, 0.08); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 4px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 10.5px; font-weight: 700; color: #ffd700;">2. Secret Point 2 (t ≈ 3.7s)</span>
+                <input type="color" id="quickPresenterColor2" value="#ffd700" style="width: 20px; height: 18px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+              </div>
+              <input type="text" id="quickPresenterText2" value="Text 2" placeholder="Point 2 Text" style="font-size: 11px; font-weight: 700;">
+            </div>
+
+            <!-- Point 3 -->
+            <div style="background: rgba(255, 59, 48, 0.08); border: 1px solid rgba(255, 59, 48, 0.3); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 4px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 10.5px; font-weight: 700; color: #ff3b30;">3. Secret Point 3 (t ≈ 4.9s)</span>
+                <input type="color" id="quickPresenterColor3" value="#ff3b30" style="width: 20px; height: 18px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+              </div>
+              <input type="text" id="quickPresenterText3" value="Text 3" placeholder="Point 3 Text" style="font-size: 11px; font-weight: 700;">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1308,6 +1420,8 @@
             <option value="youtube-feed-hook">25. YouTube Video & Suggested Feed (Insert Media)</option>
             <option value="hand-orb-hook">26. Floating Orb Footage Hook (Cinematic Hand)</option>
             <option value="capcut-keyframe-hook">27. CapCut Keyframe Editing Hook (Desktop Suite)</option>
+            <option value="dual-card-pan-hook">28. 3D Dual-Card Camera Pan & Dash Hook</option>
+            <option value="presenter-3points-reveal-hook">29. 3 Points Presenter Hook (Curiosity Reveal)</option>
           </select>
         </div>
 
@@ -1776,6 +1890,180 @@
           </div>
         </div>
 
+        <!-- 3D DUAL-CARD CAMERA PAN & DASH HOOK CONTROLS CONTAINER (Preset 28) -->
+        <div id="motionDualCardPanPanel" style="display: none; flex-direction: column; gap: 14px;">
+          <div class="input-group" style="background: rgba(0, 102, 214, 0.06); border: 1px solid rgba(0, 102, 214, 0.25); padding: 12px; border-radius: 10px;">
+            <div class="input-label" style="font-weight: 700; color: #fff; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span><i data-lucide="layers" style="width: 14px; height: 14px; vertical-align: middle; color: #ffea00;"></i> 3D Dual-Card & Roadmap Settings</span>
+              <span class="val-badge" style="background: rgba(255, 234, 0, 0.15); color: #ffea00;">PRESET 28</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <!-- Card 1 Settings -->
+              <div style="background: rgba(0,0,0,0.45); border: 1px solid rgba(0, 102, 214, 0.35); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 11.5px; font-weight: 800; color: #60a5fa;">Card 1 (Left Footage)</span>
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 10px; color: var(--text-muted);">Stripe Color:</span>
+                    <input type="color" id="motionDualCardStripe1" value="#0066d6" style="width: 24px; height: 24px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+                  </div>
+                </div>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <label class="pill-btn" style="flex: 1; justify-content: center; font-size: 11px; padding: 6px 10px; cursor: pointer; background: rgba(0, 102, 214, 0.18); border: 1px solid rgba(0, 102, 214, 0.45); color: #60a5fa;">
+                    <i data-lucide="upload" style="width: 12px; height: 12px;"></i>
+                    <span id="motionDualCardStatus1">Upload Footage 1</span>
+                    <input type="file" id="motionDualCardUpload1" accept="image/*,video/*" style="display: none;">
+                  </label>
+                  <button class="pill-btn" id="motionDualCardReset1" style="font-size: 11px; padding: 6px 8px; color: var(--text-muted);" title="Reset to Stripes">Reset</button>
+                </div>
+                <div>
+                  <span style="font-size: 10.5px; color: var(--text-muted); display: block; margin-bottom: 3px;">Placeholder Screen Headline</span>
+                  <input type="text" id="motionDualCardPlaceholder1" value="INSERT FOOTAGE HERE" placeholder="Screen Headline" style="font-weight: 700; font-size: 11px;">
+                </div>
+                <div>
+                  <span style="font-size: 10.5px; color: var(--text-muted); display: block; margin-bottom: 3px;">Sub-Headline Text (Under Card 1)</span>
+                  <input type="text" id="motionDualCardText1" value="YOUR TEXT GOES HERE" placeholder="Text below Card 1" style="font-weight: 800; font-size: 11px;">
+                </div>
+              </div>
+
+              <!-- Card 2 Settings -->
+              <div style="background: rgba(0,0,0,0.45); border: 1px solid rgba(255, 140, 0, 0.35); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 11.5px; font-weight: 800; color: #fb923c;">Card 2 (Right Footage)</span>
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 10px; color: var(--text-muted);">Stripe Color:</span>
+                    <input type="color" id="motionDualCardStripe2" value="#0066d6" style="width: 24px; height: 24px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+                  </div>
+                </div>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <label class="pill-btn" style="flex: 1; justify-content: center; font-size: 11px; padding: 6px 10px; cursor: pointer; background: rgba(255, 140, 0, 0.18); border: 1px solid rgba(255, 140, 0, 0.45); color: #fb923c;">
+                    <i data-lucide="upload" style="width: 12px; height: 12px;"></i>
+                    <span id="motionDualCardStatus2">Upload Footage 2</span>
+                    <input type="file" id="motionDualCardUpload2" accept="image/*,video/*" style="display: none;">
+                  </label>
+                  <button class="pill-btn" id="motionDualCardReset2" style="font-size: 11px; padding: 6px 8px; color: var(--text-muted);" title="Reset to Stripes">Reset</button>
+                </div>
+                <div>
+                  <span style="font-size: 10.5px; color: var(--text-muted); display: block; margin-bottom: 3px;">Placeholder Screen Headline</span>
+                  <input type="text" id="motionDualCardPlaceholder2" value="INSERT FOOTAGE HERE" placeholder="Screen Headline" style="font-weight: 700; font-size: 11px;">
+                </div>
+                <div>
+                  <span style="font-size: 10.5px; color: var(--text-muted); display: block; margin-bottom: 3px;">Sub-Headline Text (Under Card 2)</span>
+                  <input type="text" id="motionDualCardText2" value="YOUR TEXT GOES HERE" placeholder="Text below Card 2" style="font-weight: 800; font-size: 11px;">
+                </div>
+              </div>
+
+              <!-- Roadmap Dashed Line & Transition -->
+              <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255, 234, 0, 0.25); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 11px; font-weight: 700; color: #ffea00;">Connecting Dashed Line Color</span>
+                  <input type="color" id="motionDualCardDashColor" value="#ffea00" style="width: 24px; height: 24px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 POINTS PRESENTER HOOK CONTROLS CONTAINER (Preset 29) -->
+        <div id="motionPresenter3PointsPanel" style="display: none; flex-direction: column; gap: 14px;">
+          <div class="input-group" style="background: rgba(0, 240, 255, 0.06); border: 1px solid rgba(0, 240, 255, 0.25); padding: 12px; border-radius: 10px;">
+            <div class="input-label" style="font-weight: 700; color: #fff; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span><i data-lucide="user-check" style="width: 14px; height: 14px; vertical-align: middle; color: #00f0ff;"></i> Presenter & 3 Points Curiosity Settings</span>
+              <span class="val-badge" style="background: rgba(0, 240, 255, 0.15); color: #00f0ff;">PRESET 29</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              
+              <!-- Presenter Head Slot -->
+              <div style="background: rgba(0,0,0,0.45); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 11.5px; font-weight: 800; color: #34d399;">Presenter Head Avatar / Video</span>
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 10px; color: var(--text-muted);">Hazard Tint:</span>
+                    <input type="color" id="motionPresenterHeadColor" value="#10b981" style="width: 24px; height: 24px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+                  </div>
+                </div>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <label class="pill-btn" style="flex: 1; justify-content: center; font-size: 11px; padding: 6px 10px; cursor: pointer; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.45); color: #34d399;">
+                    <i data-lucide="upload" style="width: 12px; height: 12px;"></i>
+                    <span id="motionPresenterHeadStatus">Upload Avatar / Video Footage</span>
+                    <input type="file" id="motionPresenterHeadUpload" accept="image/*,video/*" style="display: none;">
+                  </label>
+                  <button class="pill-btn" id="motionPresenterHeadReset" style="font-size: 11px; padding: 6px 8px; color: var(--text-muted);" title="Reset Head">Reset</button>
+                </div>
+                <div>
+                  <span style="font-size: 10.5px; color: var(--text-muted); display: block; margin-bottom: 3px;">Placeholder Head Text</span>
+                  <input type="text" id="motionPresenterHeadPlaceholder" value="INSERT FOOTAGE HERE" placeholder="Screen Headline" style="font-weight: 700; font-size: 11px;">
+                </div>
+              </div>
+
+              <!-- Neon Arrow Color -->
+              <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255, 59, 0, 0.35); border-radius: 8px; padding: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <span style="font-size: 11.5px; font-weight: 800; color: #ff5722; display: block;">Curved Neon Arrows</span>
+                  <span style="font-size: 10px; color: var(--text-muted);">Arcs from pointing finger to points 1, 2, 3</span>
+                </div>
+                <input type="color" id="motionPresenterArrowColor" value="#ff3b00" style="width: 24px; height: 24px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+              </div>
+
+              <!-- Font / Text Size Control -->
+              <div style="background: rgba(0,0,0,0.45); border: 1px solid rgba(140, 82, 255, 0.35); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 11.5px; font-weight: 800; color: #c084fc;">Points Text & Curiosity Size</span>
+                  <span class="val-badge" id="motionPresenterFontSizeVal" style="font-size: 10.5px; background: rgba(140, 82, 255, 0.2); color: #c084fc; padding: 1px 7px; border-radius: 4px;">56px</span>
+                </div>
+                <input type="range" id="motionPresenterFontSize" min="24" max="96" value="56" step="1" style="width: 100%; accent-color: var(--primary); cursor: pointer;">
+              </div>
+
+              <!-- Point 1 -->
+              <div style="background: rgba(0,0,0,0.45); border: 1px solid rgba(0, 240, 255, 0.35); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 11.5px; font-weight: 800; color: #00f0ff;">1. Secret Point 1 (Unblurs at t ≈ 2.3s)</span>
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 10px; color: var(--text-muted);">Glow Tint:</span>
+                    <input type="color" id="motionPresenterColor1" value="#00f0ff" style="width: 24px; height: 24px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+                  </div>
+                </div>
+                <input type="text" id="motionPresenterText1" value="Text 1" placeholder="Point 1 Text" style="font-weight: 700; font-size: 11px;">
+              </div>
+
+              <!-- Point 2 -->
+              <div style="background: rgba(0,0,0,0.45); border: 1px solid rgba(255, 215, 0, 0.35); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 11.5px; font-weight: 800; color: #ffd700;">2. Secret Point 2 (Unblurs at t ≈ 3.7s)</span>
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 10px; color: var(--text-muted);">Glow Tint:</span>
+                    <input type="color" id="motionPresenterColor2" value="#ffd700" style="width: 24px; height: 24px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+                  </div>
+                </div>
+                <input type="text" id="motionPresenterText2" value="Text 2" placeholder="Point 2 Text" style="font-weight: 700; font-size: 11px;">
+              </div>
+
+              <!-- Point 3 -->
+              <div style="background: rgba(0,0,0,0.45); border: 1px solid rgba(255, 59, 48, 0.35); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 11.5px; font-weight: 800; color: #ff3b30;">3. Secret Point 3 (Unblurs at t ≈ 4.9s)</span>
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 10px; color: var(--text-muted);">Glow Tint:</span>
+                    <input type="color" id="motionPresenterColor3" value="#ff3b30" style="width: 24px; height: 24px; border: none; border-radius: 4px; cursor: pointer; background: transparent;">
+                  </div>
+                </div>
+                <input type="text" id="motionPresenterText3" value="Text 3" placeholder="Point 3 Text" style="font-weight: 700; font-size: 11px;">
+              </div>
+
+              <!-- Camera Zoom Settings -->
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 4px;">
+                <div>
+                  <span style="font-size: 11.5px; font-weight: 700; color: #fff; display: block;">Cinematic Camera Push-In</span>
+                  <span style="font-size: 10px; color: var(--text-muted);">Subtle zoom (1.00x → 1.06x) with natural drift</span>
+                </div>
+                <label style="display: inline-flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" id="motionPresenterCameraZoomToggle" checked style="width: 16px; height: 16px; accent-color: var(--primary);">
+                </label>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         <!-- Timing & Duration -->
         <div class="input-group">
           <div class="input-label">
@@ -1811,12 +2099,27 @@
           </button>
         </div>
 
-        <div class="toolbar-group">
-          <button class="pill-btn" id="btnTransparentBg">
-            <i data-lucide="layers" style="width: 14px; height: 14px;"></i> Transparent
+        <div class="toolbar-group bg-media-controls" style="display: flex; align-items: center; gap: 8px;">
+          <!-- Hidden file input for Local Image / Video BG -->
+          <input type="file" id="bgMediaFileInput" accept="image/*,video/mp4,video/webm,video/quicktime,video/mkv" style="display: none;">
+
+          <!-- Upload Custom Background Button -->
+          <button class="pill-btn" id="btnUploadBgMedia" title="Upload custom background image or video from PC" style="display: flex; align-items: center; gap: 6px;">
+            <i data-lucide="image-plus" style="width: 14px; height: 14px;"></i>
+            <span id="bgMediaBtnLabel">Add BG (Image / Video)</span>
           </button>
-          <button class="pill-btn" id="btnGreenScreen">
-            <i data-lucide="palette" style="width: 14px; height: 14px;"></i> Green Screen
+
+          <!-- Dim / Darken Slider (0% to 90%) for contrast control -->
+          <div id="bgDimControl" style="display: none; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; color: var(--text-muted); background: rgba(255, 255, 255, 0.06); padding: 5px 10px; border-radius: 9999px; border: 1px solid var(--card-border);">
+            <span>Dim:</span>
+            <input type="range" id="bgDimSlider" min="0" max="90" value="25" style="width: 55px; height: 4px; accent-color: var(--accent-purple); cursor: pointer;">
+            <span id="bgDimVal" style="color: #fff; min-width: 24px;">25%</span>
+          </div>
+
+          <!-- Reset / Remove BG Button -->
+          <button class="pill-btn" id="btnRemoveBgMedia" title="Remove custom background" style="display: none; color: #ef4444; border-color: rgba(239, 68, 68, 0.3); padding: 7px 10px;">
+            <i data-lucide="trash-2" style="width: 13px; height: 13px;"></i>
+            <span>Remove BG</span>
           </button>
         </div>
       </div>
@@ -1878,10 +2181,7 @@
             <option value="720p_30">📱 720p HD • 30 FPS</option>
           </select>
 
-          <select id="exportFormatSelect" style="background: rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 7px 10px; font-weight: 700; font-size: 12px; color: #fff; border: 1px solid var(--card-border); outline: none; cursor: pointer;">
-            <option value="mp4">🎬 MP4 Video (.mp4 via FFmpeg)</option>
-            <option value="webm">✨ Transparent Alpha (.webm)</option>
-          </select>
+          <input type="hidden" id="exportFormatSelect" value="mp4">
 
           <button class="export-action-btn" id="btnExportVideo">
             <i data-lucide="download" style="width: 16px; height: 16px;"></i>
@@ -1895,6 +2195,34 @@
   <script>
     if (typeof lucide !== 'undefined') {
       try { lucide.createIcons(); } catch (e) {}
+    }
+
+    // Defensive polyfill for CanvasRenderingContext2D.roundRect
+    if (!CanvasRenderingContext2D.prototype.roundRect) {
+      CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+        if (typeof r === 'undefined') r = 0;
+        let tl = 0, tr = 0, br = 0, bl = 0;
+        if (typeof r === 'number') {
+          tl = tr = br = bl = r;
+        } else if (Array.isArray(r)) {
+          if (r.length === 1) tl = tr = br = bl = r[0];
+          else if (r.length === 2) { tl = br = r[0]; tr = bl = r[1]; }
+          else if (r.length === 4) { [tl, tr, br, bl] = r; }
+        } else if (typeof r === 'object') {
+          tl = r.tl || 0; tr = r.tr || 0; br = r.br || 0; bl = r.bl || 0;
+        }
+        this.beginPath();
+        this.moveTo(x + tl, y);
+        this.lineTo(x + w - tr, y);
+        this.quadraticCurveTo(x + w, y, x + w, y + tr);
+        this.lineTo(x + w, y + h - br);
+        this.quadraticCurveTo(x + w, y + h, x + w - br, y + h);
+        this.lineTo(x + bl, y + h);
+        this.quadraticCurveTo(x, y + h, x, y + h - bl);
+        this.lineTo(x, y + tl);
+        this.quadraticCurveTo(x, y, x + tl, y);
+        this.closePath();
+      };
     }
 
     // =========================================================================
@@ -2176,11 +2504,27 @@
         osc.stop(this.ctx.currentTime + 0.22);
       }
 
-      async renderOfflineWav(totalDur) {
-        if (!this.recordedEvents || this.recordedEvents.length === 0) return null;
+      async renderOfflineWav(totalDur, bgAudioBuffer = null) {
+        const hasEvents = (this.recordedEvents && this.recordedEvents.length > 0);
+        if (!hasEvents && !bgAudioBuffer) return null;
         const sampleRate = 44100;
         const length = Math.max(1, Math.ceil(totalDur * sampleRate));
         const offlineCtx = new OfflineAudioContext(2, length, sampleRate);
+
+        if (bgAudioBuffer) {
+          try {
+            const bgSource = offlineCtx.createBufferSource();
+            bgSource.buffer = bgAudioBuffer;
+            bgSource.loop = true;
+            const bgGain = offlineCtx.createGain();
+            bgGain.gain.setValueAtTime(0.85, 0);
+            bgSource.connect(bgGain);
+            bgGain.connect(offlineCtx.destination);
+            bgSource.start(0);
+          } catch (e) {
+            console.warn("Background audio mix warning:", e);
+          }
+        }
 
         for (const ev of this.recordedEvents) {
           const t = Math.max(0, Math.min(ev.time, totalDur - 0.05));
@@ -2278,6 +2622,76 @@
     }
 
     const sfx = new SoundEngine();
+
+    // =========================================================================
+    // Custom Local Background State (Image or Video)
+    // =========================================================================
+    const customBg = {
+      type: null, // null | 'image' | 'video'
+      image: null,
+      video: null,
+      videoSrc: null,
+      videoDuration: 0,
+      dimOverlay: 0.25,
+      filename: '',
+      audioBuffer: null,
+      serverVideoId: null
+    };
+
+    function drawCoverMedia(ctx, media, targetW, targetH, dx = 0, dy = 0) {
+      const mw = media.videoWidth || media.naturalWidth || media.width;
+      const mh = media.videoHeight || media.naturalHeight || media.height;
+      if (!mw || !mh) return;
+
+      const targetAspect = targetW / targetH;
+      const mediaAspect = mw / mh;
+
+      let sx, sy, sw, sh;
+      if (mediaAspect > targetAspect) {
+        // Media is wider than target: fit height, crop width center
+        sh = mh;
+        sw = mh * targetAspect;
+        sx = (mw - sw) / 2;
+        sy = 0;
+      } else {
+        // Media is taller than target: fit width, crop height center
+        sw = mw;
+        sh = mw / targetAspect;
+        sx = 0;
+        sy = (mh - sh) / 2;
+      }
+
+      ctx.drawImage(media, sx, sy, sw, sh, dx, dy, targetW, targetH);
+    }
+
+    function drawCustomOrThemeBackground(ctx, width, height, currentTime, fallbackThemeFn) {
+      // If rendering offline export frames with server-side video background, keep transparent
+      if (ctx.isExport && customBg.type === 'video' && customBg.serverVideoId) {
+        ctx.clearRect(0, 0, width, height);
+        return;
+      }
+
+      if (customBg.type === 'image' && customBg.image && customBg.image.complete && customBg.image.naturalWidth > 0) {
+        drawCoverMedia(ctx, customBg.image, width, height);
+        if (customBg.dimOverlay > 0) {
+          ctx.fillStyle = `rgba(0, 0, 0, ${customBg.dimOverlay})`;
+          ctx.fillRect(0, 0, width, height);
+        }
+      } else if (customBg.type === 'video' && customBg.video && customBg.video.readyState >= 2) {
+        drawCoverMedia(ctx, customBg.video, width, height);
+        if (customBg.dimOverlay > 0) {
+          ctx.fillStyle = `rgba(0, 0, 0, ${customBg.dimOverlay})`;
+          ctx.fillRect(0, 0, width, height);
+        }
+      } else {
+        if (typeof fallbackThemeFn === 'function') {
+          fallbackThemeFn();
+        } else {
+          ctx.fillStyle = '#08080c';
+          ctx.fillRect(0, 0, width, height);
+        }
+      }
+    }
 
     // App State
     const state = {
@@ -2401,6 +2815,35 @@
           primaryColor: '#0066cc',
           duration: 5.0,
           showKeyframes: true
+        },
+        // 3D Dual-Card Camera Pan & Dash Hook Settings (Preset 28)
+        dualCardPan: {
+          media1: null,
+          media2: null,
+          placeholder1: 'INSERT FOOTAGE HERE',
+          placeholder2: 'INSERT FOOTAGE HERE',
+          text1: 'YOUR TEXT GOES HERE',
+          text2: 'YOUR TEXT GOES HERE',
+          stripeColor1: '#0066d6',
+          stripeColor2: '#0066d6',
+          dashColor: '#ffea00',
+          duration: 5.0
+        },
+        // 3 Points Presenter Hook Settings (Preset 29)
+        presenter3Points: {
+          headMedia: null,
+          headPlaceholder: 'INSERT FOOTAGE HERE',
+          headColor: '#10b981',
+          arrowColor: '#ff3b00',
+          point1Text: 'Text 1',
+          point1Color: '#00f0ff',
+          point2Text: 'Text 2',
+          point2Color: '#ffd700',
+          point3Text: 'Text 3',
+          point3Color: '#ff3b30',
+          fontSize: 56,
+          duration: 6.5,
+          cameraZoom: true
         }
       }
 
@@ -2450,6 +2893,12 @@
     let playedSoundEvents = new Set();
 
     function getTotalDuration() {
+      if (state.currentStyle === 'presenter-3points-reveal-hook') {
+        return (state.motion && state.motion.presenter3Points && state.motion.presenter3Points.duration) ? state.motion.presenter3Points.duration : 6.5;
+      }
+      if (state.currentStyle === 'dual-card-pan-hook') {
+        return (state.motion && state.motion.dualCardPan && state.motion.dualCardPan.duration) ? state.motion.dualCardPan.duration : 5.0;
+      }
       if (state.currentStyle === 'capcut-keyframe-hook') {
         return (state.motion && state.motion.capCut && state.motion.capCut.duration) ? state.motion.capCut.duration : 5.0;
       }
@@ -2459,8 +2908,11 @@
       if (state.currentStyle === 'youtube-feed-hook') {
         return (state.motion && state.motion.feed && state.motion.feed.duration) ? state.motion.feed.duration : 3.5;
       }
-      if (state.currentStyle === 'donut-chart-hook' || state.currentStyle === 'rising-view-counter' || state.currentStyle === 'timeline-step-hook') {
-        return state.motion.duration || (state.currentStyle === 'timeline-step-hook' ? 8.5 : 12.0);
+      if (state.currentStyle === 'timeline-step-hook') {
+        return (state.motion && state.motion.timelineDuration) ? state.motion.timelineDuration : 8.5;
+      }
+      if (state.currentStyle === 'donut-chart-hook' || state.currentStyle === 'rising-view-counter') {
+        return state.motion.duration || 12.0;
       }
       if (state.currentStyle.startsWith('google-') || state.currentStyle === 'safari-glass' || state.currentStyle === 'ai-search' || state.currentStyle === 'url-bar-hero') {
         return 4.0;
@@ -3787,15 +4239,7 @@
     // DYNAMIC MOTION GRAPHICS ENGINE (Presets 22 - 23)
     // =========================================================================
     function renderDonutChartHook(ctx, currentTime, width, height, scaleFactor, isExport) {
-      const isGreenScreen = viewportStage.classList.contains('green-screen');
-      const isTransparent = viewportStage.classList.contains('transparent');
-
-      if (isGreenScreen) {
-        ctx.fillStyle = '#00ff00';
-        ctx.fillRect(0, 0, width, height);
-      } else if (isTransparent) {
-        ctx.clearRect(0, 0, width, height);
-      } else {
+      drawCustomOrThemeBackground(ctx, width, height, currentTime, () => {
         // Deep Crimson Red to pitch-black vignette gradient matching video
         const bgGrad = ctx.createRadialGradient(
           width * 0.08, height * 0.92, 10 * scaleFactor,
@@ -3807,7 +4251,7 @@
         bgGrad.addColorStop(1, '#050102');
         ctx.fillStyle = bgGrad;
         ctx.fillRect(0, 0, width, height);
-      }
+      });
 
       const isAspectVertical = canvasWrapper.classList.contains('aspect-9-16');
       const cx = width / 2;
@@ -4128,22 +4572,14 @@
     }
 
     function renderRisingViewCounter(ctx, currentTime, width, height, scaleFactor, isExport) {
-      const isGreenScreen = viewportStage.classList.contains('green-screen');
-      const isTransparent = viewportStage.classList.contains('transparent');
-
-      if (isGreenScreen) {
-        ctx.fillStyle = '#00ff00';
-        ctx.fillRect(0, 0, width, height);
-      } else if (isTransparent) {
-        ctx.clearRect(0, 0, width, height);
-      } else {
+      drawCustomOrThemeBackground(ctx, width, height, currentTime, () => {
         const bgGrad = ctx.createLinearGradient(0, 0, width, height);
         bgGrad.addColorStop(0, '#0f0a12');
         bgGrad.addColorStop(0.5, '#09050b');
         bgGrad.addColorStop(1, '#050206');
         ctx.fillStyle = bgGrad;
         ctx.fillRect(0, 0, width, height);
-      }
+      });
 
       const isAspectVertical = canvasWrapper.classList.contains('aspect-9-16');
       const cx = width / 2;
@@ -4342,15 +4778,7 @@
 
     // PRESET 24: DYNAMIC MULTI-STEP TIMELINE HOOK (Retention Roadmap)
     function renderTimelineStepHook(ctx, currentTime, width, height, scaleFactor, isExport) {
-      const isGreenScreen = viewportStage.classList.contains('green-screen');
-      const isTransparent = viewportStage.classList.contains('transparent');
-
-      if (isGreenScreen) {
-        ctx.fillStyle = '#00ff00';
-        ctx.fillRect(0, 0, width, height);
-      } else if (isTransparent) {
-        ctx.clearRect(0, 0, width, height);
-      } else {
+      drawCustomOrThemeBackground(ctx, width, height, currentTime, () => {
         // Deep Obsidian Dark Background with Yellow Technical Cyber Grid (Matching Video!)
         ctx.fillStyle = '#070709';
         ctx.fillRect(0, 0, width, height);
@@ -4374,7 +4802,7 @@
         }
         ctx.stroke();
         ctx.restore();
-      }
+      });
 
       const isAspectVertical = canvasWrapper.classList.contains('aspect-9-16');
       const cx = width / 2;
@@ -4389,10 +4817,10 @@
       ];
 
       // DYNAMIC LINE LENGTH SCALING: Line length dynamically increases based on step count!
-      const maxAllowedW = isAspectVertical ? width * 0.90 : width * 0.88;
-      const segWBase = isAspectVertical ? (maxAllowedW / stepCount) : (245 * scaleFactor);
+      const maxAllowedW = isAspectVertical ? width * 0.90 : width * 0.84;
+      const segWBase = isAspectVertical ? (maxAllowedW / stepCount) : (235 * scaleFactor);
       const desiredBarW = isAspectVertical ? maxAllowedW : (stepCount * segWBase);
-      const barW = Math.min(maxAllowedW, Math.max(380 * scaleFactor, desiredBarW));
+      const barW = Math.min(maxAllowedW, Math.max(360 * scaleFactor, desiredBarW));
       const barH = (tlCfg.barHeight || 46) * scaleFactor;
       const barX = -barW / 2;
       const barY = -barH / 2;
@@ -4408,7 +4836,7 @@
       const headX = barX + fillW;
 
       // =========================================================================
-      // CAMERA CHOREOGRAPHY: Smooth Bottom Entrance & Tracking Pan Along Bar Head
+      // CAMERA CHOREOGRAPHY: Smooth Bottom Entrance & Centered Stable Framing
       // =========================================================================
       const camMode = state.motion.cameraMode || 'dynamic';
       const camIntensity = (state.motion.cameraIntensity !== undefined ? state.motion.cameraIntensity : 1.0);
@@ -4423,34 +4851,17 @@
         // 1. Fast smooth ease-out entrance from bottom (0.0s - 0.70s)
         const enterProg = Math.min(1, Math.max(0, currentTime / 0.70));
         const enterEase = easeOutCubic(enterProg);
-        enterY = (1 - enterEase) * (170 * scaleFactor) * camIntensity;
-        enterScale = 0.88 + 0.12 * enterEase;
+        enterY = (1 - enterEase) * (60 * scaleFactor) * camIntensity;
+        enterScale = 0.95 + 0.05 * enterEase;
 
         if (!isExport && currentTime > 0.05 && !playedSoundEvents.has('cam_enter_timeline')) {
           playedSoundEvents.add('cam_enter_timeline');
           sfx.playWhoosh(180, 850);
         }
 
-        if (camMode === 'dynamic') {
-          // Dynamic camera tracking: follows the glowing head across the bar
-          const targetPanX = -(headX * 0.65) * camIntensity;
-
-          // Pull out smoothly at settle time (after activeDur)
-          if (currentTime > activeDur) {
-            const pullProg = Math.min(1, (currentTime - activeDur) / (holdDur * 0.75));
-            const pullEase = easeInOutCubic(pullProg);
-            camPanX = targetPanX * (1 - pullEase);
-            camScale = (1.0 + 0.16 * camIntensity) * (1 - pullEase) + 1.0 * pullEase;
-          } else {
-            camPanX = targetPanX;
-            camScale = 1.0 + 0.16 * camIntensity;
-          }
-        }
-
         // Ambient Organic 3D Float
-        if (currentTime > activeDur) {
-          camPanX += Math.sin(currentTime * 1.6) * (3.0 * scaleFactor) * camIntensity;
-          camPanY += Math.cos(currentTime * 1.2) * (2.2 * scaleFactor) * camIntensity;
+        if (currentTime > 0.70) {
+          camPanY += Math.sin(currentTime * 1.5) * (2.2 * scaleFactor) * camIntensity;
         }
       }
 
@@ -4535,8 +4946,9 @@
 
         // Kinetic Dropping Letters
         ctx.save();
-        const baseFontSize = Math.round((28 - Math.max(0, stepCount - 3) * 3) * scaleFactor);
-        const fontSize = Math.max(14, Math.min(30, baseFontSize));
+        const fontScale = (state.fontSize ? state.fontSize / 50 : 1.0);
+        const stepBaseSize = (28 - Math.max(0, stepCount - 3) * 2.5) * fontScale;
+        const fontSize = Math.max(14, Math.round(stepBaseSize * scaleFactor));
         const fontFam = state.fontFamily || "'Montserrat', sans-serif";
         ctx.font = `900 ${fontSize}px ${fontFam}`;
         ctx.textAlign = 'center';
@@ -4767,15 +5179,7 @@
 
     function renderYouTubeFeedHook(ctx, currentTime, width, height, scaleFactor, isExport) {
       // 1. Stage Background
-      const isGreenScreen = viewportStage.classList.contains('green-screen');
-      const isTransparent = viewportStage.classList.contains('transparent');
-
-      if (isGreenScreen) {
-        ctx.fillStyle = '#00ff00';
-        ctx.fillRect(0, 0, width, height);
-      } else if (isTransparent) {
-        ctx.clearRect(0, 0, width, height);
-      } else {
+      drawCustomOrThemeBackground(ctx, width, height, currentTime, () => {
         // Deep Cinematic Dark Studio Vignette Background
         const bgGrad = ctx.createRadialGradient(
           width * 0.4, height * 0.45, 20 * scaleFactor,
@@ -4805,7 +5209,7 @@
           ctx.stroke();
         }
         ctx.restore();
-      }
+      });
 
       const isAspectVertical = canvasWrapper.classList.contains('aspect-9-16');
       const feedCfg = (state.motion && state.motion.feed) ? state.motion.feed : {};
@@ -5155,12 +5559,7 @@
       const isAspectVertical = height > width;
 
       // 1. Draw Background
-      if (viewportStage.classList.contains('green-screen')) {
-        ctx.fillStyle = '#00ff00';
-        ctx.fillRect(0, 0, width, height);
-      } else if (viewportStage.classList.contains('transparent')) {
-        ctx.clearRect(0, 0, width, height);
-      } else {
+      drawCustomOrThemeBackground(ctx, width, height, currentTime, () => {
         if (handHookBg.complete && handHookBg.naturalWidth > 0) {
           ctx.drawImage(handHookBg, 0, 0, width, height);
         } else {
@@ -5176,7 +5575,7 @@
           ctx.fillStyle = bgGrad;
           ctx.fillRect(0, 0, width, height);
         }
-      }
+      });
 
       // 2. Camera Choreography & Focus Zoom
       // "camera movement rakh... imp jagah par jaha focus hona chaiye"
@@ -5540,16 +5939,11 @@
       const isAspectVertical = height > width;
 
       // 1. Draw Background
-      if (viewportStage.classList.contains('green-screen')) {
-        ctx.fillStyle = '#00ff00';
-        ctx.fillRect(0, 0, width, height);
-      } else if (viewportStage.classList.contains('transparent')) {
-        ctx.clearRect(0, 0, width, height);
-      } else {
+      drawCustomOrThemeBackground(ctx, width, height, currentTime, () => {
         // Deep CapCut Dark Studio Void Background
         ctx.fillStyle = '#0b0c10';
         ctx.fillRect(0, 0, width, height);
-      }
+      });
 
       // 2. Camera Choreography (0.0s - 5.0s)
       const camMode = state.motion.cameraMode || 'dynamic';
@@ -5916,34 +6310,928 @@
     }
 
     // =========================================================================
+    // PRESET 28: 3D DUAL-CARD CAMERA PAN & DASH ROADMAP HOOK
+    // Replicates 3D perspective angled cards, wavy cyber dark background,
+    // sprouting yellow dashed guide line, high-speed cinematic camera pan with
+    // motion blur, and word-by-word kinetic text bounce underneath each card.
+    // =========================================================================
+    // =========================================================================
+    // PRESET 28: 3D DUAL-CARD CAMERA PAN & DASH ROADMAP HOOK
+    // True 3D perspective camera tilt, seamless affine shear columns,
+    // bold glowing yellow dashes, wavy cyber grid, and ultra-smooth camera pan
+    // =========================================================================
+    let dcardOffCanvas1 = null;
+    let dcardOffCanvas2 = null;
+
+    // Helper: Seamless affine shear column renderer for 3D perspective cards
+    // Uses 48 vertical affine columns with trapezoidal mapping to guarantee
+    // continuous, razor-sharp slanted top & bottom edges with ZERO stair steps and ZERO seams.
+    function renderPerspectiveColumns(ctx, srcCanvas, numCols, getCol) {
+      const srcW = srcCanvas.width;
+      const srcH = srcCanvas.height;
+
+      for (let s = 0; s < numCols; s++) {
+        const p0 = s / numCols;
+        const p1 = (s + 1) / numCols;
+        const col0 = getCol(p0);
+        const col1 = getCol(p1);
+
+        const u0 = p0 * srcW;
+        const u1 = p1 * srcW;
+        const sw = u1 - u0;
+
+        const x0 = col0.x;
+        const x1 = col1.x;
+        const dw = x1 - x0;
+
+        const yt0 = col0.yTop;
+        const yt1 = col1.yTop;
+        const yb0 = col0.yBot;
+        const yb1 = col1.yBot;
+
+        const h0 = yb0 - yt0;
+        const h1 = yb1 - yt1;
+        const avgH = (h0 + h1) / 2;
+
+        const a = (dw + 0.65) / sw; // 0.65px overlap eliminates microscopic hairline seams
+        const b = (yt1 - yt0) / sw; // exact vertical top edge slant
+        const c = 0;
+        const d = avgH / srcH;      // vertical perspective scaling
+        const e = x0;
+        const f = yt0;
+
+        ctx.save();
+        // Clip to the exact trapezoid of this column (with 0.65px right overlap)
+        ctx.beginPath();
+        ctx.moveTo(x0, yt0);
+        ctx.lineTo(x1 + 0.65, yt1);
+        ctx.lineTo(x1 + 0.65, yb1);
+        ctx.lineTo(x0, yb0);
+        ctx.closePath();
+        ctx.clip();
+
+        ctx.transform(a, b, c, d, e, f);
+        ctx.drawImage(srcCanvas, u0, 0, sw, srcH, 0, 0, sw, srcH);
+        ctx.restore();
+      }
+    }
+
+    function renderDualCardPanHook(ctx, currentTime, width, height, scaleFactor, isExport) {
+      const cfg = (state.motion && state.motion.dualCardPan) ? state.motion.dualCardPan : {};
+      const totalDur = cfg.duration || 5.0;
+      const isAspectVertical = canvasWrapper.classList.contains('aspect-9-16');
+
+      // 1. Background (Custom User Image/Video or Authentic Charcoal Studio with Organic Wavy Grid)
+      drawCustomOrThemeBackground(ctx, width, height, currentTime, () => {
+        ctx.fillStyle = '#28282b';
+        ctx.fillRect(0, 0, width, height);
+
+        // Organic Wavy Grid (Matching ~250px cell size of reference video)
+        ctx.save();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.075)';
+        ctx.lineWidth = 1.6 * scaleFactor;
+        const cellSize = 250 * scaleFactor;
+        const driftX = (currentTime * 10 * scaleFactor) % cellSize;
+        const driftY = (currentTime * 6 * scaleFactor) % cellSize;
+
+        // Horizontal Wavy Lines
+        for (let gy = -cellSize + driftY; gy <= height + cellSize; gy += cellSize) {
+          ctx.beginPath();
+          for (let gx = 0; gx <= width; gx += 20 * scaleFactor) {
+            const waveY = gy + Math.sin(gx * 0.0025 + currentTime * 0.85 + gy * 0.008) * (7.5 * scaleFactor);
+            if (gx === 0) ctx.moveTo(gx, waveY);
+            else ctx.lineTo(gx, waveY);
+          }
+          ctx.stroke();
+        }
+
+        // Vertical Wavy Lines
+        for (let gx = -cellSize + driftX; gx <= width + cellSize; gx += cellSize) {
+          ctx.beginPath();
+          for (let gy = 0; gy <= height; gy += 20 * scaleFactor) {
+            const waveX = gx + Math.cos(gy * 0.0025 + currentTime * 0.85 + gx * 0.008) * (7.5 * scaleFactor);
+            if (gy === 0) ctx.moveTo(waveX, gy);
+            else ctx.lineTo(waveX, gy);
+          }
+          ctx.stroke();
+        }
+        ctx.restore();
+      });
+
+      // 2. Layout Geometry & Dimensions (Proportions matching reference video)
+      const cy = isAspectVertical ? height * 0.44 : height * 0.46;
+      // In 16:9, card is 54.5% of canvas width (698px on 1280, matching 696px reference)
+      const cardW = isAspectVertical ? Math.round(width * 0.88) : Math.round(width * 0.545);
+      const cardH = Math.round(cardW * 0.588);
+      const cornerRad = Math.round((isAspectVertical ? 24 : 28) * scaleFactor);
+
+      // Pan Distance between Card 1 and Card 2:
+      // Expanded to 2.6x width (3.0x vertical) so Card 1 exits at t≈1.75s,
+      // and camera travels along the glowing yellow line across the void for ~1.2s before Card 2 appears!
+      const panDistance = isAspectVertical ? (width * 3.0) : (width * 2.6);
+
+      // Initial subtle rightward drift for Card 1 (matching reference cx: 433 -> 577)
+      const c1DriftX = (currentTime < 1.30) ? (currentTime / 1.30) * (35 * scaleFactor) : (35 * scaleFactor);
+      const c1x = (width / 2 - 15 * scaleFactor) + c1DriftX;
+      const c2x = c1x + panDistance;
+
+      // 3. Camera Pan Choreography
+      // 0.00s - 0.45s: Left Card (Card 1) smooth zoom-out animation (1.16 -> 1.00)
+      // 0.45s - 1.15s: Card 1 Subtext word-by-word animation
+      // 1.15s - 1.55s: Bold neon yellow dashed line sprouts out towards the right
+      // 1.45s - 3.25s: 1.80-second camera cruise along the yellow line highway (void flight from 1.85s to 2.85s)
+      // 2.85s - 3.25s: Right Card (Card 2) appears with 3D perspective tilt, lands on yellow road with harmonic bounce
+      // 3.35s - 5.00s: Right Card Subtext word-by-word animation
+      const panStart = 1.45;
+      const panDur = 1.80;
+      const panRaw = Math.min(1, Math.max(0, (currentTime - panStart) / panDur));
+      // Quintic Smoothstep (6t^5 - 15t^4 + 10t^3) for butter-smooth zero-jerk transition
+      const panEase = panRaw * panRaw * panRaw * (panRaw * (panRaw * 6 - 15) + 10);
+      const camOffsetX = -panDistance * panEase;
+
+      // Dynamic Camera Y-Dip during peak pan velocity
+      const camPanY = Math.sin(panEase * Math.PI) * (-14 * scaleFactor);
+
+      // Sound Effect: Cinematic Whoosh on camera whip
+      if (!isExport && currentTime >= 1.48 && !playedSoundEvents.has('pan_whoosh_28')) {
+        playedSoundEvents.add('pan_whoosh_28');
+        sfx.playWhoosh(140, 920);
+      }
+
+      // Sound Effect: Heavy physical impact when Card 2 lands
+      if (!isExport && currentTime >= 3.10 && !playedSoundEvents.has('card2_land_28')) {
+        playedSoundEvents.add('card2_land_28');
+        sfx.playWhoosh(180, 520);
+      }
+
+      // Directional Motion Blur Speed Streaks during camera travel along dashed line
+      if (panRaw > 0.06 && panRaw < 0.94) {
+        const panVel = Math.sin(panRaw * Math.PI);
+        ctx.save();
+        ctx.fillStyle = `rgba(255, 255, 255, ${panVel * 0.11})`;
+        const streakCount = 14;
+        for (let s = 0; s < streakCount; s++) {
+          const sy = height * (0.10 + s * 0.06) + Math.sin(s * 77) * (18 * scaleFactor);
+          const sLength = (260 + (s % 5) * 110) * scaleFactor * panVel;
+          const sx = ((currentTime * 2000 * scaleFactor + s * 220) % (width + 800)) - 400;
+          ctx.fillRect(sx, sy, sLength, 2.0 * scaleFactor);
+        }
+        ctx.restore();
+      }
+
+      // 4. Connecting Neon Yellow Dashed Line
+      // Sprouts at t=1.15s (after Card 1 text animation starts) and leads camera across the void
+      const lineStartX = c1x + cardW * 0.5;
+      const lineEndX = c2x - cardW * 0.5;
+      const lineY = cy + cardH * 0.03 + camPanY;
+      const lineGrowthT = Math.min(1, Math.max(0, (currentTime - 1.15) / 1.50));
+      const currentEndX = lineStartX + (lineEndX - lineStartX) * easeOutCubic(lineGrowthT);
+
+      if (lineGrowthT > 0.01) {
+        ctx.save();
+        ctx.translate(camOffsetX, 0);
+        ctx.beginPath();
+        ctx.moveTo(lineStartX, lineY);
+        ctx.lineTo(currentEndX, lineY);
+
+        ctx.strokeStyle = cfg.dashColor || '#ffe600';
+        ctx.lineWidth = 16 * scaleFactor; // noticeably bolder and thicker
+        ctx.lineCap = 'round';
+        ctx.setLineDash([65 * scaleFactor, 26 * scaleFactor]); // prominent capsule dashes
+        ctx.lineDashOffset = -(currentTime * 45 * scaleFactor);
+
+        // Neon Yellow Halo Bloom
+        ctx.shadowColor = 'rgba(255, 230, 0, 0.95)';
+        ctx.shadowBlur = 26 * scaleFactor;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // 5. Helper Function: Draw 3D Perspective Card (Affine Shear Mesh)
+      // Exact empirical 3D perspective projection:
+      // Left edge: shorter. Right edge: taller (+11.4% taller, closer to camera)
+      // Top edge slopes up (-0.062 * cardH)
+      // Bottom edge slopes down (+0.052 * cardH)
+      function drawPerspectiveCard(cardCenterX, cardCenterY, media, placeholderText, stripeColor, isCard2, cardAlpha = 1, cardScale = 1.0) {
+        if (cardAlpha <= 0.005) return;
+
+        const effectiveW = cardW * cardScale;
+        const effectiveH = cardH * cardScale;
+
+        // Viewport culling: Skip off-screen cards to conserve GPU memory and avoid video decode stalls
+        const screenX = cardCenterX + camOffsetX;
+        if (screenX < -effectiveW * 1.5 || screenX > width + effectiveW * 1.5) {
+          return;
+        }
+
+        const offW = Math.round(cardW);
+        const offH = Math.round(cardH);
+
+        // Prepare offscreen canvas
+        let offCanvas = isCard2 ? dcardOffCanvas2 : dcardOffCanvas1;
+        if (!offCanvas) {
+          offCanvas = document.createElement('canvas');
+          if (isCard2) dcardOffCanvas2 = offCanvas;
+          else dcardOffCanvas1 = offCanvas;
+        }
+        if (offCanvas.width !== offW || offCanvas.height !== offH) {
+          offCanvas.width = offW;
+          offCanvas.height = offH;
+        }
+        const octx = offCanvas.getContext('2d');
+        octx.clearRect(0, 0, offW, offH);
+
+        // A. Draw card base with rounded corners
+        octx.save();
+        octx.beginPath();
+        octx.roundRect(0, 0, offW, offH, cornerRad);
+        octx.clip();
+
+        // Dark underlay (#141518) - ZERO white corner leaks!
+        octx.fillStyle = '#141518';
+        octx.fillRect(0, 0, offW, offH);
+
+        if (media) {
+          // 3% overscan/bleed margin to cleanly eliminate outer white lines, browser borders,
+          // or Youtube screenshot corner strips in the user's footage
+          const bleed = 1.03;
+          const bw = offW * bleed;
+          const bh = offH * bleed;
+          drawCoverMedia(octx, media, bw, bh, -(bw - offW) / 2, -(bh - offH) / 2);
+        } else {
+          // Authentic Hazard Stripes Placeholder
+          octx.fillStyle = '#ffffff';
+          octx.fillRect(0, 0, offW, offH);
+
+          // 55-Degree Blue Diagonal Hazard Stripes
+          octx.fillStyle = stripeColor || '#0066d6';
+          const stripeW = Math.round(32 * scaleFactor);
+          const slantOffset = offH * 0.60;
+          octx.beginPath();
+          for (let sx = -offW - slantOffset * 2; sx <= offW + slantOffset * 2; sx += stripeW * 2) {
+            octx.moveTo(sx, 0);
+            octx.lineTo(sx + stripeW, 0);
+            octx.lineTo(sx + stripeW - slantOffset, offH);
+            octx.lineTo(sx - slantOffset, offH);
+            octx.closePath();
+          }
+          octx.fill();
+
+          // Centered Bold Screen Headline (e.g. "INSERT FOOTAGE HERE")
+          const headline = (placeholderText || 'INSERT FOOTAGE HERE').toUpperCase();
+          const headlineWords = headline.split(/\s+/);
+          octx.save();
+          octx.fillStyle = '#141518';
+          const fontFam = state.fontFamily || "'Montserrat', sans-serif";
+          const headFontSize = Math.round((isAspectVertical ? 32 : 44) * scaleFactor);
+          octx.font = `900 ${headFontSize}px ${fontFam}`;
+          octx.textAlign = 'center';
+          octx.textBaseline = 'middle';
+
+          const lineH = Math.round((isAspectVertical ? 34 : 46) * scaleFactor);
+          if (headlineWords.length >= 3) {
+            octx.fillText(headlineWords[0], offW / 2, offH / 2 - lineH);
+            octx.fillText(headlineWords.slice(1, -1).join(' '), offW / 2, offH / 2);
+            octx.fillText(headlineWords[headlineWords.length - 1], offW / 2, offH / 2 + lineH);
+          } else if (headlineWords.length === 2) {
+            octx.fillText(headlineWords[0], offW / 2, offH / 2 - lineH * 0.6);
+            octx.fillText(headlineWords[1], offW / 2, offH / 2 + lineH * 0.6);
+          } else {
+            octx.fillText(headline, offW / 2, offH / 2);
+          }
+          octx.restore();
+        }
+        octx.restore(); // end clipping
+
+        // NOTE: Fixed border outline per user request!
+        // Harsh white stroke removed completely. Clean, crisp borderless video screen.
+
+        // B. Perspective Projection Coordinates Formula
+        // Noticeably accentuated 3D tilt with razor-sharp affine columns
+        function getCol(p) {
+          const px = cardCenterX + (p - 0.5) * effectiveW + camOffsetX;
+          const pyTop = cardCenterY + effectiveH * (-0.468 - 0.062 * p) + camPanY;
+          const pyBot = cardCenterY + effectiveH * (0.472 + 0.052 * p) + camPanY;
+          return { x: px, yTop: pyTop, yBot: pyBot, h: pyBot - pyTop };
+        }
+
+        ctx.save();
+        if (cardAlpha < 1) ctx.globalAlpha = cardAlpha;
+
+        // C. Realistic soft diffused ambient drop shadow (indented so it NEVER pokes past rounded corners!)
+        // NOTE: Fixed bottom line per user request!
+        // The unrounded extrusion lip polygon is completely removed.
+        // Ambient shadow is drawn as an indented pill with 32px blur so no straight stick or ledge pokes out.
+        ctx.save();
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.55)';
+        ctx.shadowBlur = 32 * scaleFactor;
+        ctx.shadowOffsetY = 16 * scaleFactor;
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.40)';
+        ctx.beginPath();
+        const shadowPad = 48 * scaleFactor;
+        const shadowW = Math.max(20, (effectiveW - shadowPad * 2));
+        const shadowX = cardCenterX - shadowW / 2 + camOffsetX;
+        const shadowY = cardCenterY + effectiveH * 0.43 + camPanY;
+        ctx.roundRect(shadowX, shadowY, shadowW, 14 * scaleFactor, 12 * scaleFactor);
+        ctx.fill();
+        ctx.restore();
+
+        // D. Render the Card via 48 Seamless Affine Shear Columns
+        renderPerspectiveColumns(ctx, offCanvas, 48, getCol);
+        ctx.restore();
+      }
+
+      // 6. Helper Function: Word-by-Word Kinetic Sub-Text in 3D Perspective
+      // Spans full card width with +3.6 degree tilt matching bottom baseline
+      function drawSubHeadline(textStr, cardCenterX, cardCenterY, startDelay) {
+        const textWords = (textStr || 'YOUR TEXT GOES HERE').toUpperCase().split(/\s+/);
+        // Base Y positioned cleanly below the card bottom
+        const textBaseY = cardCenterY + cardH * 0.50 + (isAspectVertical ? 42 : 56) * scaleFactor;
+
+        ctx.save();
+        const fontFam = state.fontFamily || "'Montserrat', sans-serif";
+        const baseFontSize = isAspectVertical ? 38 : 56;
+        const fontScale = (state.fontSize ? state.fontSize / 50 : 1.0);
+        let fontSize = Math.round(baseFontSize * scaleFactor * fontScale);
+        ctx.font = `900 ${fontSize}px ${fontFam}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        let wordMeasurements = [];
+        let totalW = 0;
+        let spaceW = ctx.measureText(' ').width;
+
+        textWords.forEach(w => {
+          const mw = ctx.measureText(w).width;
+          wordMeasurements.push(mw);
+          totalW += mw;
+        });
+        totalW += spaceW * (textWords.length - 1);
+
+        // Auto-fit to match card width (~94% of cardW)
+        const targetTextW = cardW * 0.94;
+        if (totalW > targetTextW) {
+          const fitRatio = targetTextW / totalW;
+          fontSize = Math.max(14, Math.round(fontSize * fitRatio));
+          ctx.font = `900 ${fontSize}px ${fontFam}`;
+          wordMeasurements = [];
+          totalW = 0;
+          spaceW = ctx.measureText(' ').width;
+          textWords.forEach(w => {
+            const mw = ctx.measureText(w).width;
+            wordMeasurements.push(mw);
+            totalW += mw;
+          });
+          totalW += spaceW * (textWords.length - 1);
+        }
+
+        let curX = cardCenterX - totalW / 2;
+
+        textWords.forEach((word, idx) => {
+          const wWidth = wordMeasurements[idx];
+          const wordCenter = curX + wWidth / 2;
+          curX += wWidth + spaceW;
+
+          const wordDelay = startDelay + idx * 0.10;
+          if (currentTime < wordDelay) return;
+
+          const wordProg = Math.min(1, Math.max(0, (currentTime - wordDelay) / 0.30));
+          const wordEase = easeBackOut(wordProg);
+          const dy = (1 - wordEase) * (42 * scaleFactor);
+
+          // Word position along 3D tilted baseline (+3.6 degree slope matching reference)
+          const pWord = Math.min(1, Math.max(0, (wordCenter - (cardCenterX - cardW / 2)) / cardW));
+          const wordY = textBaseY + (pWord * 44 - 22) * scaleFactor + camPanY;
+          // Scale in perspective: larger on the right (closer to camera)
+          const perspectiveScale = 0.94 + 0.12 * pWord;
+
+          // Sound effect on word entrance
+          const soundKey = `dcard_w_${startDelay}_${idx}`;
+          if (!isExport && wordProg > 0.15 && !playedSoundEvents.has(soundKey)) {
+            playedSoundEvents.add(soundKey);
+            sfx.playTypeClick();
+          }
+
+          ctx.save();
+          ctx.translate(wordCenter + camOffsetX, wordY + dy);
+          // 3D Perspective Tilt angle (+3.6 degrees) matching reference video
+          ctx.rotate(3.6 * Math.PI / 180);
+          ctx.scale(wordEase * perspectiveScale, wordEase * perspectiveScale);
+          ctx.globalAlpha = Math.min(1, wordProg * 2.2);
+
+          // Specular white bloom glow
+          ctx.shadowColor = 'rgba(255, 255, 255, 0.85)';
+          ctx.shadowBlur = 18 * scaleFactor;
+
+          // Black border outline for ultra-high contrast
+          ctx.strokeStyle = '#050608';
+          ctx.lineWidth = 7.0 * scaleFactor;
+          ctx.lineJoin = 'round';
+          ctx.strokeText(word, 0, 0);
+
+          // Crisp white fill
+          ctx.fillStyle = '#ffffff';
+          ctx.fillText(word, 0, 0);
+          ctx.restore();
+        });
+
+        ctx.restore();
+      }
+
+      // 7. Render Card 1 & Card 2 with Smooth Dynamics
+      // Step 1: Card 1 Initial Zoom-Out Animation (scale 1.16 down to 1.00 from t=0 to 0.45s)
+      let c1Scale = 1.0;
+      if (currentTime < 0.45) {
+        const zProg = Math.min(1, Math.max(0, currentTime / 0.45));
+        c1Scale = 1.16 - 0.16 * easeOutCubic(zProg);
+      }
+      const c1Float = Math.sin(currentTime * 1.6) * (3.5 * scaleFactor);
+      drawPerspectiveCard(c1x, cy + c1Float, cfg.media1, cfg.placeholder1 || 'INSERT FOOTAGE HERE', cfg.stripeColor1 || '#0066d6', false, 1.0, c1Scale);
+
+      // Step 2: Card 1 Text Animation starts at t=0.45s (after zoom-out completes)
+      drawSubHeadline(cfg.text1 || 'YOUR TEXT GOES HERE', c1x, cy + c1Float, 0.45);
+
+      // Step 3 & 4: Card 2 Appears around t=2.85s, swoops in tilted, lands with harmonic damped settle
+      let c2Alpha = 0;
+      let c2SwoopY = 0;
+      let c2Scale = 1.0;
+      if (currentTime >= 2.85) {
+        const c2AppearT = Math.min(1, (currentTime - 2.85) / 0.38);
+        const c2Ease = easeOutCubic(c2AppearT);
+        c2Alpha = c2Ease;
+        c2SwoopY = (1 - c2Ease) * (-35 * scaleFactor);
+        c2Scale = 0.90 + 0.10 * c2Ease;
+      }
+      const c2Settle = (currentTime > 3.10) ? Math.sin((currentTime - 3.10) * 5.2) * Math.exp(-(currentTime - 3.10) * 3.8) * (15 * scaleFactor) : 0;
+      const c2Float = Math.sin((currentTime + 1.2) * 1.6) * (3.5 * scaleFactor);
+
+      if (c2Alpha > 0.005) {
+        drawPerspectiveCard(c2x, cy + c2Float + c2Settle + c2SwoopY, cfg.media2, cfg.placeholder2 || 'INSERT FOOTAGE HERE', cfg.stripeColor2 || '#0066d6', true, c2Alpha, c2Scale);
+        // Step 5: Card 2 Text Animation starts at t=3.35s (after Card 2 lands and settles)
+        drawSubHeadline(cfg.text2 || 'YOUR TEXT GOES HERE', c2x, cy + c2Float + c2Settle, 3.35);
+      }
+    }
+
+    // =========================================================================
+    // PRESET 29: 3 POINTS PRESENTER HOOK (Curiosity Reveal)
+    // =========================================================================
+    const businessmanBodyImg = new Image();
+    businessmanBodyImg.src = 'businessman_body.png';
+    const businessmanHeadImg = new Image();
+    businessmanHeadImg.src = 'businessman_head.png';
+
+    function renderPresenter3PointsHook(ctx, currentTime, width, height, scaleFactor, isExport) {
+      const cfg = (state.motion && state.motion.presenter3Points) ? state.motion.presenter3Points : {};
+      const totalDur = cfg.duration || 6.5;
+      const isAspectVertical = canvasWrapper.classList.contains('aspect-9-16');
+
+      // 1. Background (Studio Charcoal #121114 or User Custom Media)
+      drawCustomOrThemeBackground(ctx, width, height, currentTime, () => {
+        ctx.fillStyle = '#121114';
+        ctx.fillRect(0, 0, width, height);
+
+        // Soft ambient studio lighting falloff
+        const grad = ctx.createRadialGradient(width * 0.5, height * 0.5, width * 0.2, width * 0.5, height * 0.5, width * 0.85);
+        grad.addColorStop(0, 'rgba(255, 255, 255, 0.018)');
+        grad.addColorStop(1, 'rgba(0, 0, 0, 0.55)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+      });
+
+      // 2. Camera Transform (Slow Push-In & Organic Drift)
+      const camPush = cfg.cameraZoom !== false;
+      const camProgress = Math.min(1, Math.max(0, currentTime / totalDur));
+      const camZoom = camPush ? (1.00 + camProgress * 0.05) : 1.0;
+      const camDriftX = Math.cos(currentTime * 0.9) * (1.6 * scaleFactor);
+      const camDriftY = Math.sin(currentTime * 1.2) * (1.8 * scaleFactor);
+
+      ctx.save();
+      ctx.translate(width / 2 + camDriftX, height / 2 + camDriftY);
+      ctx.scale(camZoom, camZoom);
+      ctx.translate(-width / 2, -height / 2);
+
+      // 3. Presenter Geometry & Slide Choreography
+      // 0.0s - 0.35s: Stationary centered
+      // 0.35s - 1.25s: Presenter slides smoothly rightward
+      // > 1.25s: Presenter settles into subtle breathing float
+      const slideStart = 0.35;
+      const slideDur = 0.90;
+      const slideRaw = Math.min(1, Math.max(0, (currentTime - slideStart) / slideDur));
+      const slideProg = easeInOutCubic(slideRaw);
+
+      let scale, charW, charH, startCharX, endCharX, curCharY;
+      if (!isAspectVertical) {
+        // Landscape 16:9 Layout
+        scale = height / 720;
+        charW = Math.round(423 * scale);
+        charH = Math.round(720 * scale);
+        startCharX = Math.round(width * (539 / 1280));
+        endCharX = Math.round(width * (962 / 1280));
+        curCharY = height - charH;
+      } else {
+        // Vertical 9:16 Layout
+        scale = (height * 0.55) / 720;
+        charW = Math.round(423 * scale);
+        charH = Math.round(720 * scale);
+        startCharX = Math.round(width * 0.12);
+        endCharX = Math.round(width * 0.44);
+        curCharY = height - charH;
+      }
+
+      let curCharX = startCharX + (endCharX - startCharX) * slideProg;
+
+      // Organic Breathing Float after slide completes
+      if (currentTime > 1.25) {
+        const floatT = currentTime - 1.25;
+        curCharY += Math.sin(floatT * 1.8) * (1.8 * scaleFactor);
+        curCharX += Math.cos(floatT * 1.2) * (1.0 * scaleFactor);
+      }
+
+      // Exact Tracked Coordinates relative to body cutout
+      const headCx = curCharX + 249 * scale;
+      const headCy = curCharY + 330 * scale;
+      const headRadius = Math.round(108 * scale);
+
+      // Pointing Fingertip in World Coordinates
+      const fingerX = curCharX + 26 * scale;
+      const fingerY = curCharY + 374 * scale;
+
+      // 4. Render Head Avatar Badge (Under suit collar)
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(headCx, headCy, headRadius, 0, Math.PI * 2);
+      ctx.clip();
+
+      if (cfg.headMedia) {
+        // Custom user media (Video or Image)
+        const media = cfg.headMedia;
+        const mw = media.videoWidth || media.naturalWidth || media.width || 1;
+        const mh = media.videoHeight || media.naturalHeight || media.height || 1;
+        const targetD = headRadius * 2;
+        const mScale = Math.max(targetD / mw, targetD / mh);
+        const dw = mw * mScale;
+        const dh = mh * mScale;
+        const dx = headCx - dw / 2;
+        const dy = headCy - dh / 2;
+        ctx.drawImage(media, dx, dy, dw, dh);
+      } else if (businessmanHeadImg.complete && businessmanHeadImg.naturalWidth > 0) {
+        // Default Reference Head Texture
+        ctx.drawImage(businessmanHeadImg, headCx - headRadius, headCy - headRadius, headRadius * 2, headRadius * 2);
+      } else {
+        // Fallback Procedural Hazard Stripes Badge
+        ctx.fillStyle = '#10b981';
+        ctx.fillRect(headCx - headRadius, headCy - headRadius, headRadius * 2, headRadius * 2);
+        ctx.strokeStyle = '#059669';
+        ctx.lineWidth = 14 * scale;
+        for (let x = -headRadius * 2; x < headRadius * 2; x += 24 * scale) {
+          ctx.beginPath();
+          ctx.moveTo(headCx + x, headCy - headRadius);
+          ctx.lineTo(headCx + x + headRadius * 2, headCy + headRadius);
+          ctx.stroke();
+        }
+      }
+
+      // Circular Inner Border & Glow
+      ctx.restore();
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(headCx, headCy, headRadius, 0, Math.PI * 2);
+      ctx.strokeStyle = cfg.headColor || '#10b981';
+      ctx.lineWidth = 3.5 * scaleFactor;
+      ctx.shadowColor = cfg.headColor || '#10b981';
+      ctx.shadowBlur = 14 * scaleFactor;
+      ctx.stroke();
+      ctx.restore();
+
+      // 5. Render Businessman Body Cutout (Collar overlays naturally around neck)
+      if (businessmanBodyImg.complete && businessmanBodyImg.naturalWidth > 0) {
+        ctx.drawImage(businessmanBodyImg, curCharX, curCharY, charW, charH);
+      }
+
+      // 6. Points Layout Configurations & Intelligent Auto-Fitting
+      function cleanPointStr(val, fallback, num) {
+        let s = (val !== undefined && val !== null && String(val).trim() !== '') ? String(val).trim() : fallback;
+        const prefixRegex = new RegExp('^' + num.replace('.', '\\.') + '\\s*|^\\d+[\\.\\-\\)]\\s*');
+        s = s.replace(prefixRegex, '').trim();
+        return s || fallback;
+      }
+
+      const p1Raw = cleanPointStr(cfg.point1Text, 'Text 1', '1.');
+      const p2Raw = cleanPointStr(cfg.point2Text, 'Text 2', '2.');
+      const p3Raw = cleanPointStr(cfg.point3Text, 'Text 3', '3.');
+
+      // Dynamic Font Size with Slider Control & Preset Sync
+      const userFs = (cfg.fontSize !== undefined && cfg.fontSize !== null) ? cfg.fontSize : (state.fontSize || 56);
+      const baseFs = Math.round(userFs * (isAspectVertical ? 0.72 : 1.0) * scaleFactor);
+
+      // Symmetrical vertical coordinate calculation
+      let pt1Y, pt2Y, pt3Y, pt1X, pt2X, pt3X, maxAvailableW;
+      if (!isAspectVertical) {
+        // Landscape 16:9
+        pt1Y = Math.round(height * 0.19);
+        pt2Y = Math.round(height * 0.49);
+        pt3Y = Math.round(height * 0.79);
+
+        pt1X = Math.round(width * 0.11);
+        pt2X = Math.round(width * 0.07);
+        pt3X = Math.round(width * 0.08);
+
+        maxAvailableW = Math.min(Math.round(width * 0.44), Math.max(Math.round(200 * scaleFactor), curCharX - pt1X - Math.round(40 * scaleFactor)));
+      } else {
+        // Vertical 9:16
+        pt1Y = Math.round(height * 0.13);
+        pt2Y = Math.round(height * 0.26);
+        pt3Y = Math.round(height * 0.39);
+
+        pt1X = Math.round(width * 0.08);
+        pt2X = Math.round(width * 0.08);
+        pt3X = Math.round(width * 0.08);
+
+        maxAvailableW = Math.round(width * 0.76);
+      }
+
+      const rawPoints = [
+        { num: '1.', cleanText: p1Raw, color: cfg.point1Color || '#00f0ff', x: pt1X, y: pt1Y, revealTime: 2.25 },
+        { num: '2.', cleanText: p2Raw, color: cfg.point2Color || '#ffe600', x: pt2X, y: pt2Y, revealTime: 3.65 },
+        { num: '3.', cleanText: p3Raw, color: cfg.point3Color || '#ff1e27', x: pt3X, y: pt3Y, revealTime: 4.85 }
+      ];
+
+      // Auto-scale font size & compute dynamic Bezier arrow target anchors for each point
+      const points = rawPoints.map((item, idx) => {
+        const fullStr = item.num + ' ' + item.cleanText;
+        ctx.font = `900 ${baseFs}px 'Montserrat', sans-serif`;
+        const testNumW = ctx.measureText(item.num + ' ').width;
+        const testTextW = ctx.measureText(item.cleanText).width;
+        const testTotalW = testNumW + testTextW;
+
+        let effectiveFs = baseFs;
+        let finalNumW = testNumW;
+        let finalTextW = testTextW;
+
+        if (testTotalW > maxAvailableW) {
+          const ratio = maxAvailableW / testTotalW;
+          effectiveFs = Math.max(Math.round(20 * scaleFactor), Math.floor(baseFs * ratio));
+          ctx.font = `900 ${effectiveFs}px 'Montserrat', sans-serif`;
+          finalNumW = ctx.measureText(item.num + ' ').width;
+          finalTextW = ctx.measureText(item.cleanText).width;
+        }
+
+        const boxH = Math.round(effectiveFs * 1.16);
+        const boxW = Math.min(maxAvailableW - finalNumW, Math.max(Math.round(140 * scaleFactor), finalTextW + 16 * scaleFactor));
+        const boxX = item.x + finalNumW + 4 * scaleFactor;
+        const boxY = item.y - boxH / 2;
+
+        const rightEdge = Math.max(boxX + boxW, item.x + finalNumW + finalTextW);
+        const arrowP3X = Math.round(!isAspectVertical ? Math.min(width * 0.60, rightEdge + 16 * scaleFactor) : Math.min(width * 0.85, rightEdge + 12 * scaleFactor));
+        const arrowP3Y = item.y;
+
+        let arrowCP1, arrowCP2;
+        if (!isAspectVertical) {
+          if (idx === 0) {
+            arrowCP1 = { x: fingerX + 180 * scale, y: fingerY - 210 * scale };
+            arrowCP2 = { x: Math.max(arrowP3X + 110 * scale, (fingerX + arrowP3X) / 2 + 90 * scale), y: Math.round(height * (25 / 720)) };
+          } else if (idx === 1) {
+            arrowCP1 = { x: fingerX + 25 * scale, y: fingerY - 145 * scale };
+            arrowCP2 = { x: Math.max(arrowP3X + 100 * scale, (fingerX + arrowP3X) / 2 + 75 * scale), y: arrowP3Y - 120 * scale };
+          } else {
+            arrowCP1 = { x: fingerX + 65 * scale, y: fingerY + 280 * scale };
+            arrowCP2 = { x: Math.max(arrowP3X + 110 * scale, (fingerX + arrowP3X) / 2 + 85 * scale), y: Math.round(height * (790 / 720)) };
+          }
+        } else {
+          if (idx === 0) {
+            arrowCP1 = { x: fingerX + 40 * scale, y: fingerY - 220 * scale };
+            arrowCP2 = { x: Math.round(width * 0.85), y: Math.round(height * 0.06) };
+          } else if (idx === 1) {
+            arrowCP1 = { x: fingerX - 20 * scale, y: fingerY - 140 * scale };
+            arrowCP2 = { x: Math.round(width * 0.85), y: Math.round(height * 0.20) };
+          } else {
+            arrowCP1 = { x: fingerX + 40 * scale, y: fingerY + 80 * scale };
+            arrowCP2 = { x: Math.round(width * 0.88), y: Math.round(height * 0.40) };
+          }
+        }
+
+        return {
+          ...item,
+          fullStr,
+          fontSize: effectiveFs,
+          numW: finalNumW,
+          textW: finalTextW,
+          boxX,
+          boxY,
+          boxW,
+          boxH,
+          arrowP3: { x: arrowP3X, y: arrowP3Y },
+          arrowCP1,
+          arrowCP2
+        };
+      });
+
+      // 7. Render 3 Curved Neon Bezier Arrows (Sprouting at t = 0.70s - 0.95s)
+      if (currentTime >= 0.70) {
+        const arrowRaw = Math.min(1, Math.max(0, (currentTime - 0.70) / 0.25));
+        const arrowProg = easeOutCubic(arrowRaw);
+        const arrowColor = cfg.arrowColor || '#ff3b00';
+
+        ctx.save();
+        ctx.strokeStyle = arrowColor;
+        ctx.fillStyle = arrowColor;
+        ctx.lineWidth = Math.max(3.5, 6.5 * scaleFactor);
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.shadowColor = arrowColor;
+        ctx.shadowBlur = 24 * scaleFactor;
+
+        const p0 = { x: fingerX, y: fingerY };
+
+        points.forEach((item) => {
+          const cp1 = item.arrowCP1;
+          const cp2 = item.arrowCP2;
+          const p3 = item.arrowP3;
+
+          const steps = Math.max(12, Math.round(36 * arrowProg));
+          ctx.beginPath();
+          let lastX = p0.x, lastY = p0.y;
+          let prevX = lastX, prevY = lastY;
+
+          for (let i = 0; i <= steps; i++) {
+            const u = (i / steps) * arrowProg;
+            const u1 = 1 - u;
+            const px = u1*u1*u1*p0.x + 3*u1*u1*u*cp1.x + 3*u1*u*u*cp2.x + u*u*u*p3.x;
+            const py = u1*u1*u1*p0.y + 3*u1*u1*u*cp1.y + 3*u1*u*u*cp2.y + u*u*u*p3.y;
+            if (i === 0) ctx.moveTo(px, py);
+            else {
+              prevX = lastX;
+              prevY = lastY;
+              ctx.lineTo(px, py);
+            }
+            lastX = px;
+            lastY = py;
+          }
+          ctx.stroke();
+
+          // Arrowhead at tip
+          if (arrowProg >= 0.98) {
+            const angle = Math.atan2(lastY - prevY, lastX - prevX);
+            const headLen = 22 * scaleFactor;
+            ctx.beginPath();
+            ctx.moveTo(p3.x, p3.y);
+            ctx.lineTo(
+              p3.x - headLen * Math.cos(angle - Math.PI / 5.5),
+              p3.y - headLen * Math.sin(angle - Math.PI / 5.5)
+            );
+            ctx.lineTo(
+              p3.x - headLen * Math.cos(angle + Math.PI / 5.5),
+              p3.y - headLen * Math.sin(angle + Math.PI / 5.5)
+            );
+            ctx.closePath();
+            ctx.fill();
+          }
+        });
+
+        ctx.restore();
+      }
+
+      // 8. Render 3 Curiosity Reveal Points (Pop-in at t = 0.95s - 1.08s)
+      if (currentTime >= 0.95) {
+        const popRaw = Math.min(1, Math.max(0, (currentTime - 0.95) / 0.13));
+        const popProg = easeBackOut(popRaw);
+
+        points.forEach((item, itemIdx) => {
+          ctx.save();
+
+          const isRevealed = currentTime >= (item.revealTime + 0.22);
+          const isRevealing = currentTime >= item.revealTime && currentTime < (item.revealTime + 0.22);
+          const revealProg = isRevealed ? 1 : isRevealing ? (currentTime - item.revealTime) / 0.22 : 0;
+
+          // Pop-in transform
+          ctx.translate(item.x, item.y);
+          ctx.scale(popProg, popProg);
+          ctx.translate(-item.x, -item.y);
+
+          ctx.font = `900 ${item.fontSize}px 'Montserrat', sans-serif`;
+          ctx.textAlign = 'left';
+          ctx.textBaseline = 'middle';
+
+          if (!isRevealed && !isRevealing) {
+            // A. Number with 3D shadow & neon glow
+            ctx.save();
+            ctx.fillStyle = '#06060a';
+            ctx.fillText(item.num, item.x + 4 * scaleFactor, item.y + 4 * scaleFactor);
+            ctx.fillStyle = item.color;
+            ctx.shadowColor = item.color;
+            ctx.shadowBlur = 28 * scaleFactor;
+            ctx.fillText(item.num, item.x, item.y);
+            ctx.restore();
+
+            // B. Solid Glowing Pixelated Mosaic Curiosity Block
+            ctx.save();
+            ctx.shadowColor = item.color;
+            ctx.shadowBlur = 24 * scaleFactor;
+
+            const cols = 7;
+            const rows = 3;
+            const cellW = item.boxW / cols;
+            const cellH = item.boxH / rows;
+
+            for (let r = 0; r < rows; r++) {
+              for (let c = 0; c < cols; c++) {
+                const shimmer = Math.sin(c * 2.2 + r * 3.6 + currentTime * 8.5 + itemIdx * 2.8);
+                const alpha = 0.55 + 0.38 * shimmer;
+                ctx.fillStyle = hexToRgba(item.color, alpha);
+                ctx.fillRect(item.boxX + c * cellW + 1, item.boxY + r * cellH + 1, cellW - 2, cellH - 2);
+              }
+            }
+            ctx.restore();
+
+          } else if (isRevealing) {
+            // C. Glitch Explosion Unblur Transition (0.22s)
+            const g = revealProg;
+            const jitterX = Math.sin(g * 48) * (8.0 * scaleFactor * (1.0 - g));
+            const jitterY = (Math.random() - 0.5) * (5.0 * scaleFactor * (1.0 - g));
+
+            // Dissolving pixel chunks
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, 1.0 - g * 1.5);
+            ctx.shadowColor = item.color;
+            ctx.shadowBlur = 30 * scaleFactor;
+            const cols = 7;
+            const rows = 3;
+            const cellW = item.boxW / cols;
+            const cellH = item.boxH / rows;
+
+            for (let r = 0; r < rows; r++) {
+              for (let c = 0; c < cols; c++) {
+                const angle = Math.atan2(r - rows / 2, c - cols / 2);
+                const dist = g * (26 * scaleFactor);
+                ctx.fillStyle = hexToRgba(item.color, 0.85);
+                ctx.fillRect(
+                  item.boxX + c * cellW + Math.cos(angle) * dist,
+                  item.boxY + r * cellH + Math.sin(angle) * dist,
+                  cellW - 2,
+                  cellH - 2
+                );
+              }
+            }
+            ctx.restore();
+
+            // Revealed Text Cross-fade with Bright Flash
+            ctx.save();
+            ctx.globalAlpha = g;
+            ctx.font = `900 ${item.fontSize}px 'Montserrat', sans-serif`;
+            ctx.fillStyle = item.color;
+            ctx.shadowColor = '#ffffff';
+            ctx.shadowBlur = 36 * scaleFactor;
+            ctx.fillText(item.fullStr, item.x + jitterX, item.y + jitterY);
+            ctx.restore();
+
+          } else {
+            // D. Fully Revealed Clean Glowing Bold Typography
+            ctx.save();
+            ctx.font = `900 ${item.fontSize}px 'Montserrat', sans-serif`;
+            // 3D dark extrusion shadow
+            ctx.fillStyle = '#06060a';
+            ctx.fillText(item.fullStr, item.x + 4 * scaleFactor, item.y + 4 * scaleFactor);
+            // Neon glow + vibrant fill
+            ctx.fillStyle = item.color;
+            ctx.shadowColor = item.color;
+            ctx.shadowBlur = 30 * scaleFactor;
+            ctx.fillText(item.fullStr, item.x, item.y);
+            ctx.restore();
+          }
+
+          ctx.restore();
+        });
+      }
+
+      ctx.restore(); // Camera transform restore
+    }
+
+    // =========================================================================
     // MASTER RENDER FUNCTION (100% Identical for Preview & Export)
     // =========================================================================
     function drawMotionFrame(ctx, currentTime, width, height, isExport = false) {
-      // 1. Background
-      if (viewportStage.classList.contains('green-screen')) {
-        ctx.fillStyle = '#00ff00';
-        ctx.fillRect(0, 0, width, height);
-      } else if (viewportStage.classList.contains('transparent')) {
-        ctx.clearRect(0, 0, width, height);
-      } else if (state.bgTheme === 'cyber-void') {
-        ctx.fillStyle = '#000000';
-        ctx.fillRect(0, 0, width, height);
-      } else if (state.bgTheme === 'radial-glow') {
-        const rad = ctx.createRadialGradient(width/2, height/2, 20, width/2, height/2, width * 0.7);
-        rad.addColorStop(0, 'rgba(140, 82, 255, 0.35)');
-        rad.addColorStop(1, '#08080c');
-        ctx.fillStyle = rad;
-        ctx.fillRect(0, 0, width, height);
-      } else if (state.bgTheme === 'gradient-slate') {
-        const lin = ctx.createLinearGradient(0, 0, width, height);
-        lin.addColorStop(0, '#1e293b');
-        lin.addColorStop(1, '#0f172a');
-        ctx.fillStyle = lin;
-        ctx.fillRect(0, 0, width, height);
-      } else {
-        ctx.fillStyle = '#08080c';
-        ctx.fillRect(0, 0, width, height);
-      }
+      // 1. Background (Custom Image/Video or Preset Theme)
+      drawCustomOrThemeBackground(ctx, width, height, currentTime, () => {
+        if (state.bgTheme === 'cyber-void') {
+          ctx.fillStyle = '#000000';
+          ctx.fillRect(0, 0, width, height);
+        } else if (state.bgTheme === 'radial-glow') {
+          const rad = ctx.createRadialGradient(width/2, height/2, 20, width/2, height/2, width * 0.7);
+          rad.addColorStop(0, 'rgba(140, 82, 255, 0.35)');
+          rad.addColorStop(1, '#08080c');
+          ctx.fillStyle = rad;
+          ctx.fillRect(0, 0, width, height);
+        } else if (state.bgTheme === 'gradient-slate') {
+          const lin = ctx.createLinearGradient(0, 0, width, height);
+          lin.addColorStop(0, '#1e293b');
+          lin.addColorStop(1, '#0f172a');
+          ctx.fillStyle = lin;
+          ctx.fillRect(0, 0, width, height);
+        } else {
+          ctx.fillStyle = '#08080c';
+          ctx.fillRect(0, 0, width, height);
+        }
+      });
 
       const isAspectVertical = canvasWrapper.classList.contains('aspect-9-16');
       const baseWidth = isAspectVertical ? (canvasWrapper.clientWidth || 300) : (canvasWrapper.clientWidth || 860);
@@ -5982,6 +7270,14 @@
       }
       if (state.currentStyle === 'capcut-keyframe-hook') {
         renderCapCutHook(ctx, currentTime, width, height, scaleFactor, isExport);
+        return;
+      }
+      if (state.currentStyle === 'dual-card-pan-hook') {
+        renderDualCardPanHook(ctx, currentTime, width, height, scaleFactor, isExport);
+        return;
+      }
+      if (state.currentStyle === 'presenter-3points-reveal-hook') {
+        renderPresenter3PointsHook(ctx, currentTime, width, height, scaleFactor, isExport);
         return;
       }
 
@@ -6335,10 +7631,66 @@
       playIcon.setAttribute('data-lucide', 'pause');
       lucide.createIcons();
 
+      if (customBg.type === 'video' && customBg.video) {
+        if (customBg.videoDuration > 0) {
+          const expT = playbackTime % customBg.videoDuration;
+          if (Math.abs(customBg.video.currentTime - expT) > 0.4) {
+            customBg.video.currentTime = expT;
+          }
+        }
+        customBg.video.playbackRate = state.animationSpeed || 1.0;
+        customBg.video.play().catch(() => {});
+      }
+
+      // Sync video media for Preset 28 Dual-Card Pan
+      if (state.motion && state.motion.dualCardPan) {
+        ['media1', 'media2'].forEach(k => {
+          const v = state.motion.dualCardPan[k];
+          if (v && v.tagName === 'VIDEO') {
+            if (v.duration > 0) {
+              const expT = playbackTime % v.duration;
+              if (Math.abs(v.currentTime - expT) > 0.4) {
+                v.currentTime = expT;
+              }
+            }
+            v.playbackRate = state.animationSpeed || 1.0;
+            v.play().catch(() => {});
+          }
+        });
+      }
+
       function loop(now) {
         if (!isPlaying) return;
         try {
           playbackTime = (now - animStartTime) / 1000 * state.animationSpeed;
+
+          // Non-blocking video clock sync: allow native hardware video decoder to play smoothly
+          // Only resync if video is not already seeking and has drifted substantially (> 1.2s)
+          if (customBg.type === 'video' && customBg.video && customBg.videoDuration > 0) {
+            if (!customBg.video.seeking && (!customBg.video._lastSeek || (now - customBg.video._lastSeek > 1000))) {
+              const expT = playbackTime % customBg.videoDuration;
+              if (Math.abs(customBg.video.currentTime - expT) > 1.2) {
+                customBg.video.currentTime = expT;
+                customBg.video._lastSeek = now;
+              }
+            }
+          }
+
+          if (state.motion && state.motion.dualCardPan) {
+            ['media1', 'media2'].forEach(k => {
+              const v = state.motion.dualCardPan[k];
+              if (v && v.tagName === 'VIDEO' && v.duration > 0) {
+                if (!v.seeking && (!v._lastSeek || (now - v._lastSeek > 1000))) {
+                  const expT = playbackTime % v.duration;
+                  if (Math.abs(v.currentTime - expT) > 1.2) {
+                    v.currentTime = expT;
+                    v._lastSeek = now;
+                  }
+                }
+              }
+            });
+          }
+
           drawMotionFrame(liveCtx, playbackTime, liveCanvas.width, liveCanvas.height, false);
           updateTimelineUI();
         } catch (err) {
@@ -6360,6 +7712,15 @@
     function pause() {
       isPlaying = false;
       if (animReqId) cancelAnimationFrame(animReqId);
+      if (customBg.type === 'video' && customBg.video) {
+        customBg.video.pause();
+      }
+      if (state.motion && state.motion.dualCardPan) {
+        ['media1', 'media2'].forEach(k => {
+          const v = state.motion.dualCardPan[k];
+          if (v && v.tagName === 'VIDEO') v.pause();
+        });
+      }
       playIcon.setAttribute('data-lucide', 'play');
       lucide.createIcons();
     }
@@ -6367,6 +7728,21 @@
     function seekTo(timeInSeconds) {
       pause();
       playbackTime = Math.max(0, Math.min(getTotalDuration(), timeInSeconds));
+      if (customBg.type === 'video' && customBg.video && customBg.videoDuration > 0) {
+        if (!customBg.video.seeking) {
+          customBg.video.currentTime = playbackTime % customBg.videoDuration;
+        }
+      }
+      if (state.motion && state.motion.dualCardPan) {
+        ['media1', 'media2'].forEach(k => {
+          const v = state.motion.dualCardPan[k];
+          if (v && v.tagName === 'VIDEO' && v.duration > 0) {
+            if (!v.seeking) {
+              v.currentTime = playbackTime % v.duration;
+            }
+          }
+        });
+      }
       resizeLiveCanvas();
       drawMotionFrame(liveCtx, playbackTime, liveCanvas.width, liveCanvas.height, false);
       updateTimelineUI();
@@ -6464,17 +7840,19 @@
         progressBar.style.width = '2%';
 
         // Setup dedicated offscreen export canvas with true master resolution
+        const isServerBgVideo = (customBg.type === 'video' && Boolean(customBg.serverVideoId));
         const exportCanvas = document.createElement('canvas');
         exportCanvas.width = targetW;
         exportCanvas.height = targetH;
-        const exportCtx = exportCanvas.getContext('2d', { alpha: exportFormat === 'webm' });
+        const exportCtx = exportCanvas.getContext('2d', { alpha: true });
+        exportCtx.isExport = true;
 
         // Initialize offline sound event recorder
         sfx.startRecording();
         playedSoundEvents.clear();
 
-        const frameMime = (exportFormat === 'webm') ? 'image/png' : 'image/jpeg';
-        const frameQuality = (exportFormat === 'webm') ? undefined : 0.95;
+        const frameMime = (exportFormat === 'webm' || isServerBgVideo) ? 'image/png' : 'image/jpeg';
+        const frameQuality = (exportFormat === 'webm' || isServerBgVideo) ? undefined : 0.95;
         const frameBlobs = [];
 
         function getFrameBlob(canvas, mime, q) {
@@ -6486,6 +7864,25 @@
           });
         }
 
+        function seekVideoExact(video, targetTime) {
+          return new Promise((resolve) => {
+            if (!video || Math.abs(video.currentTime - targetTime) < 0.002) {
+              resolve();
+              return;
+            }
+            let timeout = setTimeout(() => {
+              video.removeEventListener('seeked', onSeeked);
+              resolve();
+            }, 120);
+            function onSeeked() {
+              clearTimeout(timeout);
+              resolve();
+            }
+            video.addEventListener('seeked', onSeeked, { once: true });
+            video.currentTime = targetTime;
+          });
+        }
+
         const renderStartTime = performance.now();
 
         // 1. Frame-by-frame exact deterministic capture loop
@@ -6494,11 +7891,37 @@
           playbackTime = t;
           sfx.currentExportTime = t;
 
+          // If custom background video is active and not handled natively by server, seek exact frame
+          if (customBg.type === 'video' && customBg.video && customBg.videoDuration > 0 && !isServerBgVideo) {
+            const vidT = t % customBg.videoDuration;
+            await seekVideoExact(customBg.video, vidT);
+          }
+
+          // Seek exact frame for any video footage loaded into Preset 28 Dual-Card Pan
+          if (state.currentStyle === 'dual-card-pan-hook' && state.motion && state.motion.dualCardPan) {
+            for (const k of ['media1', 'media2']) {
+              const mv = state.motion.dualCardPan[k];
+              if (mv && mv.tagName === 'VIDEO' && mv.duration > 0) {
+                await seekVideoExact(mv, t % mv.duration);
+              }
+            }
+          }
+
+          // Clear export canvas for clean transparency when compositing
+          exportCtx.clearRect(0, 0, targetW, targetH);
+
           // Render exact mathematical frame at timestamp t
-          drawMotionFrame(exportCtx, t, targetW, targetH, false);
+          drawMotionFrame(exportCtx, t, targetW, targetH, true);
 
           // Mirror onto live canvas for live visual feedback to user
           liveCtx.clearRect(0, 0, liveCanvas.width, liveCanvas.height);
+          if (isServerBgVideo && customBg.video) {
+            drawCoverMedia(liveCtx, customBg.video, liveCanvas.width, liveCanvas.height);
+            if (customBg.dimOverlay > 0) {
+              liveCtx.fillStyle = `rgba(0, 0, 0, ${customBg.dimOverlay})`;
+              liveCtx.fillRect(0, 0, liveCanvas.width, liveCanvas.height);
+            }
+          }
           liveCtx.drawImage(exportCanvas, 0, 0, liveCanvas.width, liveCanvas.height);
 
           const blob = await getFrameBlob(exportCanvas, frameMime, frameQuality);
@@ -6520,9 +7943,9 @@
         progressText.textContent = 'Synthesizing studio audio FX...';
         progressBar.style.width = '88%';
         let audioBlob = null;
-        if (sfx.enabled && sfx.recordedEvents && sfx.recordedEvents.length > 0) {
+        if (sfx.enabled || (customBg.audioBuffer && !isServerBgVideo)) {
           try {
-            audioBlob = await sfx.renderOfflineWav(totalDur);
+            audioBlob = await sfx.renderOfflineWav(totalDur, isServerBgVideo ? null : customBg.audioBuffer);
           } catch (audioErr) {
             console.warn("Audio render warning:", audioErr);
           }
@@ -6548,8 +7971,13 @@
           w: targetW,
           h: targetH,
           quality: exportQuality,
-          format: exportFormat
+          format: exportFormat,
+          dur: totalDur.toFixed(3)
         });
+        if (isServerBgVideo) {
+          urlParams.append('bg_video_id', customBg.serverVideoId);
+          urlParams.append('bg_dim', customBg.dimOverlay.toString());
+        }
 
         const response = await fetch(`/api/render_frames?${urlParams.toString()}`, {
           method: 'POST',
@@ -6627,6 +8055,31 @@
         document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         state.currentStyle = btn.getAttribute('data-style');
+
+        // Set customizable font size on preset switch
+        if (state.currentStyle === 'presenter-3points-reveal-hook') {
+          const fs = (state.motion && state.motion.presenter3Points && state.motion.presenter3Points.fontSize) ? state.motion.presenter3Points.fontSize : 56;
+          state.fontSize = fs;
+          const fontSlider = document.getElementById('fontSizeSlider');
+          const fontBadge = document.getElementById('fontSizeVal');
+          const qFs = document.getElementById('quickPresenterFontSize');
+          const mFs = document.getElementById('motionPresenterFontSize');
+          const qFsVal = document.getElementById('quickPresenterFontSizeVal');
+          const mFsVal = document.getElementById('motionPresenterFontSizeVal');
+          if (fontSlider) fontSlider.value = fs;
+          if (fontBadge) fontBadge.textContent = fs + 'px';
+          if (qFs) qFs.value = fs;
+          if (mFs) mFs.value = fs;
+          if (qFsVal) qFsVal.textContent = fs + 'px';
+          if (mFsVal) mFsVal.textContent = fs + 'px';
+        } else {
+          state.fontSize = 50;
+          const fontSlider = document.getElementById('fontSizeSlider');
+          const fontBadge = document.getElementById('fontSizeVal');
+          if (fontSlider) fontSlider.value = 50;
+          if (fontBadge) fontBadge.textContent = '50px';
+        }
+
         updateBadge();
         restartAndPlay();
       });
@@ -6646,6 +8099,18 @@
     document.getElementById('fontSizeSlider').addEventListener('input', (e) => {
       state.fontSize = parseInt(e.target.value);
       document.getElementById('fontSizeVal').textContent = state.fontSize + 'px';
+      if (state.currentStyle === 'presenter-3points-reveal-hook') {
+        if (!state.motion.presenter3Points) state.motion.presenter3Points = {};
+        state.motion.presenter3Points.fontSize = state.fontSize;
+        const qFs = document.getElementById('quickPresenterFontSize');
+        const mFs = document.getElementById('motionPresenterFontSize');
+        const qFsVal = document.getElementById('quickPresenterFontSizeVal');
+        const mFsVal = document.getElementById('motionPresenterFontSizeVal');
+        if (qFs) qFs.value = state.fontSize;
+        if (mFs) mFs.value = state.fontSize;
+        if (qFsVal) qFsVal.textContent = state.fontSize + 'px';
+        if (mFsVal) mFsVal.textContent = state.fontSize + 'px';
+      }
       restartAndPlay();
     });
 
@@ -6763,22 +8228,145 @@
       setTimeout(resizeLiveCanvas, 320);
     });
 
-    const btnTransparentBg = document.getElementById('btnTransparentBg');
-    const btnGreenScreen = document.getElementById('btnGreenScreen');
-    btnTransparentBg.addEventListener('click', () => {
-      viewportStage.classList.toggle('transparent');
-      viewportStage.classList.remove('green-screen');
-      btnTransparentBg.classList.toggle('active');
-      btnGreenScreen.classList.remove('active');
-      restartAndPlay();
-    });
-    btnGreenScreen.addEventListener('click', () => {
-      viewportStage.classList.toggle('green-screen');
-      viewportStage.classList.remove('transparent');
-      btnGreenScreen.classList.toggle('active');
-      btnTransparentBg.classList.remove('active');
-      restartAndPlay();
-    });
+    // =========================================================================
+    // Custom Local Background Upload & Controls (Image & Video)
+    // =========================================================================
+    const bgFileInput = document.getElementById('bgMediaFileInput');
+    const btnUploadBg = document.getElementById('btnUploadBgMedia');
+    const btnRemoveBg = document.getElementById('btnRemoveBgMedia');
+    const bgDimSlider = document.getElementById('bgDimSlider');
+    const bgDimVal = document.getElementById('bgDimVal');
+    const bgDimControl = document.getElementById('bgDimControl');
+    const bgMediaBtnLabel = document.getElementById('bgMediaBtnLabel');
+
+    if (btnUploadBg && bgFileInput) {
+      btnUploadBg.addEventListener('click', () => {
+        bgFileInput.click();
+      });
+
+      bgFileInput.addEventListener('change', async (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        if (file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            const img = new Image();
+            img.onload = () => {
+              if (customBg.video) {
+                customBg.video.pause();
+                if (customBg.videoSrc) URL.revokeObjectURL(customBg.videoSrc);
+              }
+              customBg.type = 'image';
+              customBg.image = img;
+              customBg.video = null;
+              customBg.videoSrc = null;
+              customBg.videoDuration = 0;
+              customBg.audioBuffer = null;
+              customBg.filename = file.name;
+              updateBgMediaUI();
+              restartAndPlay();
+            };
+            img.src = ev.target.result;
+          };
+          reader.readAsDataURL(file);
+        } else if (file.type.startsWith('video/') || file.name.match(/\.(mp4|webm|mov|mkv|avi)$/i)) {
+          if (customBg.videoSrc) URL.revokeObjectURL(customBg.videoSrc);
+          const videoUrl = URL.createObjectURL(file);
+          const video = document.createElement('video');
+          video.src = videoUrl;
+          video.muted = true;
+          video.playsInline = true;
+          video.loop = true;
+          video.preload = 'auto';
+
+          // Upload video to local server for 100% flicker-free native FFmpeg compositing
+          fetch('/api/upload_bg_video', {
+            method: 'POST',
+            body: file
+          }).then(res => res.json()).then(data => {
+            if (data && data.status === 'ok') {
+              customBg.serverVideoId = data.id;
+              console.log("[AutoAE] Background video uploaded for native compositing:", data.id);
+            }
+          }).catch(err => {
+            console.warn("[AutoAE] Server video upload warning:", err);
+          });
+
+          video.onloadedmetadata = async () => {
+            customBg.type = 'video';
+            customBg.video = video;
+            customBg.image = null;
+            customBg.videoSrc = videoUrl;
+            customBg.videoDuration = video.duration || 0;
+            customBg.filename = file.name;
+
+            // Try decoding audio track from video if available
+            try {
+              const arrayBuf = await file.arrayBuffer();
+              const tempCtx = new (window.AudioContext || window.webkitAudioContext)();
+              customBg.audioBuffer = await tempCtx.decodeAudioData(arrayBuf);
+              tempCtx.close();
+            } catch (aErr) {
+              console.log("No audio track in background video or decoding omitted:", aErr);
+              customBg.audioBuffer = null;
+            }
+
+            updateBgMediaUI();
+            restartAndPlay();
+          };
+        }
+      });
+    }
+
+    if (bgDimSlider) {
+      bgDimSlider.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value);
+        customBg.dimOverlay = val / 100;
+        if (bgDimVal) bgDimVal.textContent = `${val}%`;
+        drawMotionFrame(liveCtx, playbackTime, liveCanvas.width, liveCanvas.height, false);
+      });
+    }
+
+    if (btnRemoveBg) {
+      btnRemoveBg.addEventListener('click', () => {
+        if (customBg.video) {
+          customBg.video.pause();
+          if (customBg.videoSrc) URL.revokeObjectURL(customBg.videoSrc);
+        }
+        customBg.type = null;
+        customBg.image = null;
+        customBg.video = null;
+        customBg.videoSrc = null;
+        customBg.videoDuration = 0;
+        customBg.audioBuffer = null;
+        customBg.serverVideoId = null;
+        customBg.filename = '';
+        if (bgFileInput) bgFileInput.value = '';
+        updateBgMediaUI();
+        restartAndPlay();
+      });
+    }
+
+    function updateBgMediaUI() {
+      if (customBg.type) {
+        const icon = customBg.type === 'video' ? '🎬' : '🖼️';
+        const name = customBg.filename || (customBg.type === 'video' ? 'Video' : 'Image');
+        const shortName = name.length > 15 ? name.substring(0, 13) + '…' : name;
+        if (bgMediaBtnLabel) bgMediaBtnLabel.textContent = `${icon} ${shortName}`;
+        if (btnUploadBg) btnUploadBg.classList.add('active');
+        if (btnRemoveBg) btnRemoveBg.style.display = 'inline-flex';
+        if (bgDimControl) bgDimControl.style.display = 'inline-flex';
+      } else {
+        if (bgMediaBtnLabel) bgMediaBtnLabel.textContent = 'Add BG (Image / Video)';
+        if (btnUploadBg) btnUploadBg.classList.remove('active');
+        if (btnRemoveBg) btnRemoveBg.style.display = 'none';
+        if (bgDimControl) bgDimControl.style.display = 'none';
+      }
+      if (typeof lucide !== 'undefined') {
+        try { lucide.createIcons(); } catch (e) {}
+      }
+    }
 
     document.getElementById('btnToggleSFX').addEventListener('click', () => {
       sfx.enabled = !sfx.enabled;
@@ -6885,7 +8473,7 @@
       currentPresetBadge.textContent = `${styleName} • ${fontName} ${state.fontWeight}`;
 
       const isBrowser = state.currentStyle.startsWith('google-') || state.currentStyle === 'safari-glass' || state.currentStyle === 'ai-search' || state.currentStyle === 'url-bar-hero';
-      const isMotion = state.currentStyle === 'donut-chart-hook' || state.currentStyle === 'rising-view-counter' || state.currentStyle === 'timeline-step-hook' || state.currentStyle === 'youtube-feed-hook' || state.currentStyle === 'hand-orb-hook' || state.currentStyle === 'capcut-keyframe-hook';
+      const isMotion = state.currentStyle === 'donut-chart-hook' || state.currentStyle === 'rising-view-counter' || state.currentStyle === 'timeline-step-hook' || state.currentStyle === 'youtube-feed-hook' || state.currentStyle === 'hand-orb-hook' || state.currentStyle === 'capcut-keyframe-hook' || state.currentStyle === 'dual-card-pan-hook' || state.currentStyle === 'presenter-3points-reveal-hook';
 
       const groupText = document.getElementById('groupTextControls');
       const groupBrowser = document.getElementById('groupBrowserControls');
@@ -6906,6 +8494,8 @@
       const qFeed = document.getElementById('quickFeedControls');
       const qHandOrb = document.getElementById('quickHandOrbControls');
       const qCapCut = document.getElementById('quickCapCutControls');
+      const qDualCard = document.getElementById('quickDualCardPanControls');
+      const qPresenter = document.getElementById('quickPresenter3PointsControls');
       if (qDonut) qDonut.style.display = (state.currentStyle === 'donut-chart-hook') ? 'flex' : 'none';
       if (qCounter) qCounter.style.display = (state.currentStyle === 'rising-view-counter') ? 'flex' : 'none';
       if (qTimeline) qTimeline.style.display = (state.currentStyle === 'timeline-step-hook') ? 'flex' : 'none';
@@ -6918,6 +8508,14 @@
         qCapCut.style.display = (state.currentStyle === 'capcut-keyframe-hook') ? 'flex' : 'none';
         try { lucide.createIcons(); } catch (e) {}
       }
+      if (qDualCard) {
+        qDualCard.style.display = (state.currentStyle === 'dual-card-pan-hook') ? 'flex' : 'none';
+        try { lucide.createIcons(); } catch (e) {}
+      }
+      if (qPresenter) {
+        qPresenter.style.display = (state.currentStyle === 'presenter-3points-reveal-hook') ? 'flex' : 'none';
+        try { lucide.createIcons(); } catch (e) {}
+      }
 
       // Update dedicated panels in tab-motion
       const pnlDonut = document.getElementById('motionDonutPanel');
@@ -6926,12 +8524,16 @@
       const pnlFeed = document.getElementById('motionFeedPanel');
       const pnlHandOrb = document.getElementById('motionHandOrbPanel');
       const pnlCapCut = document.getElementById('motionCapCutPanel');
+      const pnlDualCard = document.getElementById('motionDualCardPanPanel');
+      const pnlPresenter = document.getElementById('motionPresenter3PointsPanel');
       if (pnlDonut) pnlDonut.style.display = (state.currentStyle === 'donut-chart-hook') ? 'flex' : 'none';
       if (pnlCounter) pnlCounter.style.display = (state.currentStyle === 'rising-view-counter') ? 'flex' : 'none';
       if (pnlTimeline) pnlTimeline.style.display = (state.currentStyle === 'timeline-step-hook') ? 'flex' : 'none';
       if (pnlFeed) pnlFeed.style.display = (state.currentStyle === 'youtube-feed-hook') ? 'flex' : 'none';
       if (pnlHandOrb) pnlHandOrb.style.display = (state.currentStyle === 'hand-orb-hook') ? 'flex' : 'none';
       if (pnlCapCut) pnlCapCut.style.display = (state.currentStyle === 'capcut-keyframe-hook') ? 'flex' : 'none';
+      if (pnlDualCard) pnlDualCard.style.display = (state.currentStyle === 'dual-card-pan-hook') ? 'flex' : 'none';
+      if (pnlPresenter) pnlPresenter.style.display = (state.currentStyle === 'presenter-3points-reveal-hook') ? 'flex' : 'none';
 
       // Sync duration slider when switching templates
       const durSlider = document.getElementById('motionDurationSlider');
@@ -6942,6 +8544,8 @@
         else if (state.currentStyle === 'youtube-feed-hook') curDur = (state.motion.feed && state.motion.feed.duration) ? state.motion.feed.duration : 3.5;
         else if (state.currentStyle === 'hand-orb-hook') curDur = (state.motion.handOrb && state.motion.handOrb.duration) ? state.motion.handOrb.duration : 6.0;
         else if (state.currentStyle === 'capcut-keyframe-hook') curDur = (state.motion.capCut && state.motion.capCut.duration) ? state.motion.capCut.duration : 5.0;
+        else if (state.currentStyle === 'dual-card-pan-hook') curDur = (state.motion.dualCardPan && state.motion.dualCardPan.duration) ? state.motion.dualCardPan.duration : 5.0;
+        else if (state.currentStyle === 'presenter-3points-reveal-hook') curDur = (state.motion.presenter3Points && state.motion.presenter3Points.duration) ? state.motion.presenter3Points.duration : 6.5;
         else curDur = state.motion.duration || 12.0;
         durSlider.value = curDur;
         if (durBadge) durBadge.textContent = `${curDur.toFixed(1)}s`;
@@ -6965,6 +8569,31 @@
           if (b.getAttribute('data-style') === state.currentStyle) b.classList.add('active');
           else b.classList.remove('active');
         });
+
+        // Set customizable font size on preset switch
+        if (state.currentStyle === 'presenter-3points-reveal-hook') {
+          const fs = (state.motion && state.motion.presenter3Points && state.motion.presenter3Points.fontSize) ? state.motion.presenter3Points.fontSize : 56;
+          state.fontSize = fs;
+          const fontSlider = document.getElementById('fontSizeSlider');
+          const fontBadge = document.getElementById('fontSizeVal');
+          const qFs = document.getElementById('quickPresenterFontSize');
+          const mFs = document.getElementById('motionPresenterFontSize');
+          const qFsVal = document.getElementById('quickPresenterFontSizeVal');
+          const mFsVal = document.getElementById('motionPresenterFontSizeVal');
+          if (fontSlider) fontSlider.value = fs;
+          if (fontBadge) fontBadge.textContent = fs + 'px';
+          if (qFs) qFs.value = fs;
+          if (mFs) mFs.value = fs;
+          if (qFsVal) qFsVal.textContent = fs + 'px';
+          if (mFsVal) mFsVal.textContent = fs + 'px';
+        } else {
+          state.fontSize = 50;
+          const fontSlider = document.getElementById('fontSizeSlider');
+          const fontBadge = document.getElementById('fontSizeVal');
+          if (fontSlider) fontSlider.value = 50;
+          if (fontBadge) fontBadge.textContent = '50px';
+        }
+
         updateBadge();
         updateTimelineUI();
         restartAndPlay();
@@ -7024,6 +8653,12 @@
             if (state.motion.feed) state.motion.feed.duration = val;
           } else if (state.currentStyle === 'hand-orb-hook') {
             if (state.motion.handOrb) state.motion.handOrb.duration = val;
+          } else if (state.currentStyle === 'capcut-keyframe-hook') {
+            if (state.motion.capCut) state.motion.capCut.duration = val;
+          } else if (state.currentStyle === 'dual-card-pan-hook') {
+            if (state.motion.dualCardPan) state.motion.dualCardPan.duration = val;
+          } else if (state.currentStyle === 'presenter-3points-reveal-hook') {
+            if (state.motion.presenter3Points) state.motion.presenter3Points.duration = val;
           }
           updateTimelineUI();
         }
@@ -7546,6 +9181,297 @@
       });
     }
 
+    // =========================================================================
+    // PRESET 28: 3D DUAL-CARD CAMERA PAN & DASH HOOK EVENT BINDINGS
+    // =========================================================================
+    function bindDualCardTextInput(id1, id2, key) {
+      const el1 = document.getElementById(id1);
+      const el2 = document.getElementById(id2);
+      function update(val, src) {
+        if (!state.motion.dualCardPan) state.motion.dualCardPan = {};
+        state.motion.dualCardPan[key] = val;
+        if (src !== el1 && el1) el1.value = val;
+        if (src !== el2 && el2) el2.value = val;
+        restartAndPlay();
+      }
+      if (el1) el1.addEventListener('input', (e) => update(e.target.value, el1));
+      if (el2) el2.addEventListener('input', (e) => update(e.target.value, el2));
+    }
+    bindDualCardTextInput('quickDualCardText1', 'motionDualCardText1', 'text1');
+    bindDualCardTextInput('quickDualCardText2', 'motionDualCardText2', 'text2');
+
+    const mdcP1 = document.getElementById('motionDualCardPlaceholder1');
+    if (mdcP1) {
+      mdcP1.addEventListener('input', (e) => {
+        if (!state.motion.dualCardPan) state.motion.dualCardPan = {};
+        state.motion.dualCardPan.placeholder1 = e.target.value;
+        restartAndPlay();
+      });
+    }
+
+    const mdcP2 = document.getElementById('motionDualCardPlaceholder2');
+    if (mdcP2) {
+      mdcP2.addEventListener('input', (e) => {
+        if (!state.motion.dualCardPan) state.motion.dualCardPan = {};
+        state.motion.dualCardPan.placeholder2 = e.target.value;
+        restartAndPlay();
+      });
+    }
+
+    function bindDualCardColorInput(id1, id2, key) {
+      const el1 = document.getElementById(id1);
+      const el2 = document.getElementById(id2);
+      function update(val, src) {
+        if (!state.motion.dualCardPan) state.motion.dualCardPan = {};
+        state.motion.dualCardPan[key] = val;
+        if (src !== el1 && el1) el1.value = val;
+        if (src !== el2 && el2) el2.value = val;
+        restartAndPlay();
+      }
+      if (el1) el1.addEventListener('input', (e) => update(e.target.value, el1));
+      if (el2) el2.addEventListener('input', (e) => update(e.target.value, el2));
+    }
+    bindDualCardColorInput('quickDualCardStripe1', 'motionDualCardStripe1', 'stripeColor1');
+    bindDualCardColorInput('quickDualCardStripe2', 'motionDualCardStripe2', 'stripeColor2');
+
+    const mdcDashColor = document.getElementById('motionDualCardDashColor');
+    if (mdcDashColor) {
+      mdcDashColor.addEventListener('input', (e) => {
+        if (!state.motion.dualCardPan) state.motion.dualCardPan = {};
+        state.motion.dualCardPan.dashColor = e.target.value;
+        restartAndPlay();
+      });
+    }
+
+    function setupDualCardSlotUpload(slotNum) {
+      const quickInp = document.getElementById(`quickDualCardUpload${slotNum}`);
+      const motionInp = document.getElementById(`motionDualCardUpload${slotNum}`);
+      const quickStatus = document.getElementById(`quickDualCardStatus${slotNum}`);
+      const motionStatus = document.getElementById(`motionDualCardStatus${slotNum}`);
+      const quickReset = document.getElementById(`quickDualCardReset${slotNum}`);
+      const motionReset = document.getElementById(`motionDualCardReset${slotNum}`);
+      const key = `media${slotNum}`;
+
+      function handleFile(file) {
+        if (!file) return;
+        if (!state.motion.dualCardPan) state.motion.dualCardPan = {};
+
+        // Cleanup existing video object URL if any
+        const prevMedia = state.motion.dualCardPan[key];
+        if (prevMedia && prevMedia.tagName === 'VIDEO' && prevMedia.src) {
+          try { URL.revokeObjectURL(prevMedia.src); } catch (e) {}
+        }
+
+        if (file.type.startsWith('video/')) {
+          const video = document.createElement('video');
+          video.src = URL.createObjectURL(file);
+          video.preload = 'auto';
+          video.defaultMuted = true;
+          video.muted = true;
+          video.playsInline = true;
+          video.loop = true;
+          video.autoplay = true;
+          video.onloadeddata = () => {
+            state.motion.dualCardPan[key] = video;
+            if (quickStatus) quickStatus.textContent = `✓ Video ${slotNum}`;
+            if (motionStatus) motionStatus.textContent = `✓ Video ${slotNum} Loaded`;
+            restartAndPlay();
+          };
+        } else if (file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+              state.motion.dualCardPan[key] = img;
+              if (quickStatus) quickStatus.textContent = `✓ Media ${slotNum}`;
+              if (motionStatus) motionStatus.textContent = `✓ Media ${slotNum} Loaded`;
+              restartAndPlay();
+            };
+            img.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      function handleReset() {
+        if (state.motion.dualCardPan) {
+          const prevMedia = state.motion.dualCardPan[key];
+          if (prevMedia && prevMedia.tagName === 'VIDEO' && prevMedia.src) {
+            try { URL.revokeObjectURL(prevMedia.src); } catch (e) {}
+          }
+          state.motion.dualCardPan[key] = null;
+        }
+        if (quickInp) quickInp.value = '';
+        if (motionInp) motionInp.value = '';
+        if (quickStatus) quickStatus.textContent = `Upload Media ${slotNum}`;
+        if (motionStatus) motionStatus.textContent = `Upload Footage ${slotNum}`;
+        restartAndPlay();
+      }
+
+      if (quickInp) quickInp.addEventListener('change', (e) => { if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]); });
+      if (motionInp) motionInp.addEventListener('change', (e) => { if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]); });
+      if (quickReset) quickReset.addEventListener('click', handleReset);
+      if (motionReset) motionReset.addEventListener('click', handleReset);
+    }
+    setupDualCardSlotUpload(1);
+    setupDualCardSlotUpload(2);
+
+    const btnQuickSwitch28 = document.getElementById('btnQuickSwitchMotionTab28');
+    if (btnQuickSwitch28) {
+      btnQuickSwitch28.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchTab('tab-motion');
+      });
+    }
+
+    // =========================================================================
+    // PRESET 29: 3 POINTS PRESENTER HOOK CONTROLS BINDINGS
+    // =========================================================================
+    function setupPresenter3PointsControls() {
+      // 1. Text & Color inputs synchronization helper
+      function bindPresenterSync(quickId, motionId, stateKey, isColor = false) {
+        const qEl = document.getElementById(quickId);
+        const mEl = document.getElementById(motionId);
+        function updateVal(val) {
+          if (!state.motion.presenter3Points) state.motion.presenter3Points = {};
+          state.motion.presenter3Points[stateKey] = val;
+          if (qEl && qEl.value !== val) qEl.value = val;
+          if (mEl && mEl.value !== val) mEl.value = val;
+          restartAndPlay();
+        }
+        if (qEl) qEl.addEventListener('input', (e) => updateVal(e.target.value));
+        if (mEl) mEl.addEventListener('input', (e) => updateVal(e.target.value));
+      }
+
+      bindPresenterSync('quickPresenterText1', 'motionPresenterText1', 'point1Text');
+      bindPresenterSync('quickPresenterColor1', 'motionPresenterColor1', 'point1Color', true);
+
+      bindPresenterSync('quickPresenterText2', 'motionPresenterText2', 'point2Text');
+      bindPresenterSync('quickPresenterColor2', 'motionPresenterColor2', 'point2Color', true);
+
+      bindPresenterSync('quickPresenterText3', 'motionPresenterText3', 'point3Text');
+      bindPresenterSync('quickPresenterColor3', 'motionPresenterColor3', 'point3Color', true);
+
+      bindPresenterSync('quickPresenterArrowColor', 'motionPresenterArrowColor', 'arrowColor', true);
+
+      bindPresenterSync('quickPresenterHeadColor', 'motionPresenterHeadColor', 'headColor', true);
+      bindPresenterSync('quickPresenterHeadPlaceholder', 'motionPresenterHeadPlaceholder', 'headPlaceholder');
+
+      // 2. Camera Zoom Toggle
+      const zoomToggle = document.getElementById('motionPresenterCameraZoomToggle');
+      if (zoomToggle) {
+        zoomToggle.addEventListener('change', (e) => {
+          if (!state.motion.presenter3Points) state.motion.presenter3Points = {};
+          state.motion.presenter3Points.cameraZoom = e.target.checked;
+          restartAndPlay();
+        });
+      }
+
+      // 3. Head Slot Upload & Reset
+      const quickInp = document.getElementById('quickPresenterHeadUpload');
+      const motionInp = document.getElementById('motionPresenterHeadUpload');
+      const quickStatus = document.getElementById('quickPresenterHeadStatus');
+      const motionStatus = document.getElementById('motionPresenterHeadStatus');
+      const quickReset = document.getElementById('quickPresenterHeadReset');
+      const motionReset = document.getElementById('motionPresenterHeadReset');
+
+      function handleHeadFile(file) {
+        if (!file) return;
+        if (!state.motion.presenter3Points) state.motion.presenter3Points = {};
+
+        const prev = state.motion.presenter3Points.headMedia;
+        if (prev && prev.tagName === 'VIDEO' && prev.src) {
+          try { URL.revokeObjectURL(prev.src); } catch (e) {}
+        }
+
+        if (file.type.startsWith('video/')) {
+          const video = document.createElement('video');
+          video.src = URL.createObjectURL(file);
+          video.preload = 'auto';
+          video.defaultMuted = true;
+          video.muted = true;
+          video.playsInline = true;
+          video.loop = true;
+          video.autoplay = true;
+          video.onloadeddata = () => {
+            state.motion.presenter3Points.headMedia = video;
+            if (quickStatus) quickStatus.textContent = '✓ Video Loaded';
+            if (motionStatus) motionStatus.textContent = '✓ Video Avatar Loaded';
+            restartAndPlay();
+          };
+        } else if (file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+              state.motion.presenter3Points.headMedia = img;
+              if (quickStatus) quickStatus.textContent = '✓ Image Loaded';
+              if (motionStatus) motionStatus.textContent = '✓ Avatar Loaded';
+              restartAndPlay();
+            };
+            img.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      function handleHeadReset() {
+        if (state.motion.presenter3Points) {
+          const prev = state.motion.presenter3Points.headMedia;
+          if (prev && prev.tagName === 'VIDEO' && prev.src) {
+            try { URL.revokeObjectURL(prev.src); } catch (e) {}
+          }
+          state.motion.presenter3Points.headMedia = null;
+        }
+        if (quickInp) quickInp.value = '';
+        if (motionInp) motionInp.value = '';
+        if (quickStatus) quickStatus.textContent = 'Upload Avatar / Video';
+        if (motionStatus) motionStatus.textContent = 'Upload Avatar / Video Footage';
+        restartAndPlay();
+      }
+
+      if (quickInp) quickInp.addEventListener('change', (e) => { if (e.target.files && e.target.files[0]) handleHeadFile(e.target.files[0]); });
+      if (motionInp) motionInp.addEventListener('change', (e) => { if (e.target.files && e.target.files[0]) handleHeadFile(e.target.files[0]); });
+      if (quickReset) quickReset.addEventListener('click', handleHeadReset);
+      if (motionReset) motionReset.addEventListener('click', handleHeadReset);
+
+      // 4. Quick motion tab switch
+      const btnSwitch29 = document.getElementById('btnQuickSwitchMotionTab29');
+      if (btnSwitch29) {
+        btnSwitch29.addEventListener('click', (e) => {
+          e.preventDefault();
+          switchTab('tab-motion');
+        });
+      }
+
+      // 5. Points Font Size slider synchronization
+      const qFs = document.getElementById('quickPresenterFontSize');
+      const mFs = document.getElementById('motionPresenterFontSize');
+      const qFsVal = document.getElementById('quickPresenterFontSizeVal');
+      const mFsVal = document.getElementById('motionPresenterFontSizeVal');
+      const globalFs = document.getElementById('fontSizeSlider');
+      const globalFsVal = document.getElementById('fontSizeVal');
+
+      function updatePresenterFs(val) {
+        val = parseInt(val);
+        if (isNaN(val)) return;
+        if (!state.motion.presenter3Points) state.motion.presenter3Points = {};
+        state.motion.presenter3Points.fontSize = val;
+        state.fontSize = val;
+        if (qFs && parseInt(qFs.value) !== val) qFs.value = val;
+        if (mFs && parseInt(mFs.value) !== val) mFs.value = val;
+        if (qFsVal) qFsVal.textContent = val + 'px';
+        if (mFsVal) mFsVal.textContent = val + 'px';
+        if (globalFs && parseInt(globalFs.value) !== val) globalFs.value = val;
+        if (globalFsVal) globalFsVal.textContent = val + 'px';
+        restartAndPlay();
+      }
+
+      if (qFs) qFs.addEventListener('input', (e) => updatePresenterFs(e.target.value));
+      if (mFs) mFs.addEventListener('input', (e) => updatePresenterFs(e.target.value));
+    }
+    setupPresenter3PointsControls();
+
     const motionCamSelect = document.getElementById('motionCameraSelect');
     if (motionCamSelect) {
       motionCamSelect.addEventListener('change', (e) => {
@@ -7595,6 +9521,7 @@
       if (typeof lucide !== 'undefined') {
         try { lucide.createIcons(); } catch (e) {}
       }
+      updateBgMediaUI();
       renderTimelineStepInputs();
       updateBadge();
       updateTimelineUI();

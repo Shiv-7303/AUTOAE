@@ -21,8 +21,28 @@ def get_ffmpeg_path():
                 return os.path.join(root, "ffmpeg.exe")
     return "ffmpeg"
 
+def get_ffprobe_path():
+    p = shutil.which("ffprobe")
+    if p:
+        return p
+    ffmpeg_p = get_ffmpeg_path()
+    probe_cand = ffmpeg_p.replace("ffmpeg.exe", "ffprobe.exe").replace("ffmpeg", "ffprobe")
+    if os.path.exists(probe_cand):
+        return probe_cand
+    return "ffprobe"
+
 FFMPEG_BIN = get_ffmpeg_path()
+FFPROBE_BIN = get_ffprobe_path()
 print(f"[*] Detected FFmpeg: {FFMPEG_BIN}")
+print(f"[*] Detected FFprobe: {FFPROBE_BIN}")
+
+def check_audio_stream(filepath):
+    try:
+        cmd = [FFPROBE_BIN, "-v", "error", "-select_streams", "a", "-show_entries", "stream=codec_type", "-of", "csv=p=0", filepath]
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=5)
+        return 'audio' in r.stdout.lower()
+    except Exception:
+        return False
 
 class AutoAEHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -34,6 +54,9 @@ class AutoAEHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Headers', 'Content-Type, X-Audio-Length')
         self.send_header('Cross-Origin-Opener-Policy', 'same-origin')
         self.send_header('Cross-Origin-Embedder-Policy', 'require-corp')
+        self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        self.send_header('Pragma', 'no-cache')
+        self.send_header('Expires', '0')
         super().end_headers()
 
     def do_OPTIONS(self):
@@ -43,6 +66,42 @@ class AutoAEHandler(http.server.SimpleHTTPRequestHandler):
     def do_POST(self):
         from urllib.parse import urlparse, parse_qs
         parsed = urlparse(self.path)
+
+        # ---------------------------------------------------------------------
+        # 0. BACKGROUND VIDEO UPLOAD (Native server compositing for zero flicker)
+        # ---------------------------------------------------------------------
+        if parsed.path.startswith('/api/upload_bg_video'):
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                if content_length == 0:
+                    self.send_error(400, "Empty payload")
+                    return
+                temp_dir = tempfile.gettempdir()
+                ts = int(time.time() * 1000)
+                bg_filename = f"autoae_bg_{ts}.mp4"
+                bg_path = os.path.join(temp_dir, bg_filename)
+                with open(bg_path, 'wb') as f:
+                    bytes_left = content_length
+                    chunk_size = 65536
+                    while bytes_left > 0:
+                        chunk = self.rfile.read(min(bytes_left, chunk_size))
+                        if not chunk:
+                            break
+                        f.write(chunk)
+                        bytes_left -= len(chunk)
+
+                import json
+                resp = json.dumps({"status": "ok", "id": bg_filename}).encode('utf-8')
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Content-Length', str(len(resp)))
+                self.end_headers()
+                self.wfile.write(resp)
+                print(f"[*] Stored background video: {bg_filename} ({content_length} bytes)")
+                return
+            except Exception as e:
+                self.send_error(500, str(e))
+                return
 
         # ---------------------------------------------------------------------
         # 1. DETERMINISTIC FRAME-PIPE RENDERER (100% Butter-Smooth Master Quality)
@@ -55,6 +114,9 @@ class AutoAEHandler(http.server.SimpleHTTPRequestHandler):
                 target_h = qs.get('h', ['1080'])[0]
                 quality = qs.get('quality', ['1080p_60'])[0]
                 export_format = qs.get('format', ['mp4'])[0]
+                bg_video_id = qs.get('bg_video_id', [None])[0]
+                bg_dim = float(qs.get('bg_dim', ['0.25'])[0])
+                total_dur = float(qs.get('dur', ['0'])[0])
 
                 content_length = int(self.headers.get('Content-Length', 0))
                 audio_length = int(self.headers.get('X-Audio-Length', 0))
@@ -87,6 +149,9 @@ class AutoAEHandler(http.server.SimpleHTTPRequestHandler):
                         ff.write(chunk)
                         bytes_left -= len(chunk)
 
+                bg_path = os.path.join(temp_dir, bg_video_id) if bg_video_id else None
+                has_valid_bg = bg_path and os.path.exists(bg_path) and os.path.getsize(bg_path) > 0
+
                 if export_format == "webm":
                     cmd = [
                         FFMPEG_BIN, "-y",
@@ -100,6 +165,43 @@ class AutoAEHandler(http.server.SimpleHTTPRequestHandler):
                         "-crf", "18",
                         output_path
                     ]
+                elif has_valid_bg:
+                    # NATIVE ZERO-FLICKER FFMPEG COMPOSITING
+                    has_bg_audio = check_audio_stream(bg_path)
+                    has_render_audio = audio_length > 0 and os.path.exists(audio_path) and os.path.getsize(audio_path) > 0
+
+                    filter_complex = f"[0:v]scale={target_w}:{target_h}:force_original_aspect_ratio=increase,crop={target_w}:{target_h},setsar=1[bg]; [bg]drawbox=c=black@{bg_dim}:replace=0[bgdim]; [bgdim][1:v]overlay=0:0:eof_action=endall[outv]"
+
+                    cmd = [
+                        FFMPEG_BIN, "-y",
+                        "-stream_loop", "-1", "-i", bg_path,
+                        "-f", "image2pipe", "-vcodec", "png", "-framerate", str(target_fps), "-i", frames_path,
+                    ]
+
+                    if has_render_audio:
+                        cmd.extend(["-i", audio_path])
+
+                    if has_bg_audio and has_render_audio:
+                        filter_complex += "; [0:a][2:a]amix=inputs=2:duration=first[outa]"
+                        cmd.extend(["-filter_complex", filter_complex, "-map", "[outv]", "-map", "[outa]"])
+                    elif has_render_audio:
+                        cmd.extend(["-filter_complex", filter_complex, "-map", "[outv]", "-map", "2:a"])
+                    elif has_bg_audio:
+                        cmd.extend(["-filter_complex", filter_complex, "-map", "[outv]", "-map", "0:a"])
+                    else:
+                        cmd.extend(["-filter_complex", filter_complex, "-map", "[outv]"])
+
+                    cmd.extend([
+                        "-c:v", "libx264",
+                        "-preset", "fast",
+                        "-crf", "16",
+                        "-pix_fmt", "yuv420p",
+                        "-c:a", "aac",
+                        "-b:a", "192k",
+                    ])
+                    if total_dur > 0:
+                        cmd.extend(["-t", f"{total_dur:.3f}"])
+                    cmd.extend(["-movflags", "+faststart", output_path])
                 else:
                     if audio_length > 0 and os.path.exists(audio_path) and os.path.getsize(audio_path) > 0:
                         cmd = [

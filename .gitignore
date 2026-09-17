@@ -1,4 +1,50 @@
-# Python
+# ===== Test & Debug files =====
+test_*.py
+test_*.png
+test_downloads/
+test_downloads_fixes/
+test_preset29/
+test_preset29_final/
+comparisons_preset29/
+comparisons_preset29_final/
+
+# ===== Reference/debug images =====
+ref_*.png
+ref_detailed_flare/
+ref_reveal_frames/
+ref_uszb10as_frames/
+crop_*.png
+t_*.png
+p1_*.png
+bezier_*.png
+perfect_composite_test.png
+reconstruction_test.png
+full_ui_preset29_preview.png
+head_badge_ref.png
+test_head_inspect.png
+test_super_long_text.png
+test_vertical_clutter.png
+test_user_exact_screenshot.png
+test_clutter_fix_*.png
+businessman_*.png
+
+# ===== Scratch/helper scripts =====
+apply_preset29_fixes.py
+apply_preset30.py
+save_full_ui.py
+measure_video_perf.py
+test_scratch.py
+extracted_preset28_good.js
+
+# ===== Large media (GitHub 100MB limit) =====
+story.mp4
+template/1.zip
+template/1/
+
+# ===== Old backups =====
+hand_hook_old_backup.png
+
+# ===== Build/IDE =====
 __pycache__/
 *.pyc
 *.pyo
@@ -7,21 +53,14 @@ dist/
 build/
 venv/
 .env
-
-# Test files
-test_downloads/
-test_thumb.png
-story.mp4
-
-# IDE
 .vscode/
 .idea/
 
-# OS
+# ===== OS =====
 Thumbs.db
 Desktop.ini
 .DS_Store
 
-# Temp
+# ===== Temp =====
 *.tmp
 *.log
